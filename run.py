@@ -31,6 +31,20 @@ def validate_username(data):
         get_username()
 
 
+def game_options():
+    """
+    Display options menu, to choose game or show score board
+    """
+    print("Choose a quiz or show the score board")
+    print("-------------------------------------\n")
+    print("[s] Trivia about Science")
+    print("[m] Trivia about Movies")
+    print("[g] Trivia about Geography")
+    print("[v] View score board\n\n")
+    choice = input("Enter your choice: ")
+
+
+
 def main():
     """
     Run all functions
@@ -49,7 +63,7 @@ def main():
     print("----------------------------------------------------------------\n")
 
     get_username()
-    # game_options()
+    game_options()
     
 
 main()
