@@ -1,6 +1,36 @@
-def get_user_name():
+def get_username():
     """
-    Introduce the game and ask for username
+    Ask the player for a username
+    """
+    username = input("Please enter a username: ")
+    validate_username(username)
+
+    
+def validate_username(data):
+    """
+    Validate username by checking that at least two characteres were entered.  
+    """
+    valid = True
+    try:
+        if len(data) == 0:
+            raise ValueError(
+                "You need to enter a username")
+        if len(data) < 2:
+            raise ValueError(
+                "The username needs to be at least two characters long")
+    except ValueError as e:
+        print(f"\nInvalid data: {e}. Please try again.") 
+        valid = False
+    
+    if valid:
+        print("Valid username")
+    if valid is False:
+        get_username()
+
+
+def main():
+    """
+    Run all functions
     """
     print("\nTTTTTTTTTT   RRRR    IIIIII  VV       VV  IIIIII       AAA")
     print("    TT       R   R     II     VV     VV     II        AA AA")
@@ -13,18 +43,9 @@ def get_user_name():
     print("                       Want to learn more?                      ")
     print("          Test your trivia knowledge with a quiz game!          ")
     print("----------------------------------------------------------------\n")
-    username = input("Please enter your username: ")
 
-
-def game_options():
-
-
-def main():
-    """
-    Run all functions
-    """
-    get_user_name()
-    game_options()
-
+    get_username()
+    #game_options()
+    
 
 main()
