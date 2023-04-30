@@ -14,19 +14,20 @@ def validate_username(data):
     try:
         if len(data) == 0:
             raise ValueError(
-                "You need to enter a username")
+                " You didn't enter a username")
         if len(data) < 2:
             raise ValueError(
-                "The username needs to be at least 2 characters long.")
+                " It needs to be at least 2 characters")
         if len(data) > 10:
             raise ValueError(
-                "The username cannot be longer than 10 characters.")
+                " It cannot be longer than 10 characters")
     except ValueError as e:
-        print(f"\nInvalid data: {e}. Please try again.") 
+        print(f"\n     Invalid username: {e}.")
+        print("                        Please try again.\n") 
         valid = False
     
     if valid:
-        print("\n                   Valid username. Lets play!\n\n")
+        print("\n                           Lets play!\n\n")
     if valid is False:
         get_username()
 
@@ -42,7 +43,6 @@ def game_options():
     print("[g] Trivia about Geography")
     print("[v] View score board\n\n")
     choice = input("Enter your choice: ")
-
 
 
 def main():
@@ -63,7 +63,8 @@ def main():
     print("----------------------------------------------------------------\n")
 
     get_username()
-    game_options()
+    #WANT TO START A NEW PAGE (REMOVE INTRO)
+    game_options(choice)
     
 
 main()
