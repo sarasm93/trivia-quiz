@@ -5,13 +5,14 @@ def get_username():
     username = input("                  Please enter a username: ")
     validate_username(username)
 
-    
+
 def validate_username(data):
     """
     Validate username by checking that minimum two and maximum 10
-    characteres were entered.  
+    characteres were entered.
     """
     valid = True
+
     try:
         for blank in data:
             if (blank.isspace()) == True:
@@ -28,7 +29,7 @@ def validate_username(data):
                 " It cannot be longer than 10 characters")
     except ValueError as e:
         print(f"\n     Invalid username: {e}.")
-        print("                        Please try again.\n") 
+        print("                        Please try again.\n")
         valid = False
     
     if valid:
@@ -36,47 +37,44 @@ def validate_username(data):
     if valid == False:
         get_username()
 
+# WANT TO LET THE GET_USERNAME FUNCTION LINGER A FEW SECONDS
+
 
 def choose_game():
+    # WANT TO START A NEW PAGE (REMOVE INTRO)
     """
     Display options menu, to choose game or show score board
     """
-    print("Choose a quiz or show the score board")
+    print("\n\nChoose a quiz or show the score board")
     print("-------------------------------------\n")
     print("[s] Trivia about Science")
     print("[m] Trivia about Movies")
     print("[g] Trivia about Geography")
     print("[v] View score board\n\n")
     player_choice = input("Enter your choice: ")
-    return player_choice
+    validate_game(player_choice)
 
 
-def run_game(data):
+def validate_game(data):
     """
-    Function to 
+    Function to run a game or show the score board, based on 
+    the choice of the user.
     """
-    opt_one = set
-    opt
-
+    option_one = "s"
+    option_two = "m"
+    option_three = "g"
+    option_four = "v"
+    
     try:
-        if data == s:
-            print("run science")
-            if data != s:
-                raise ValueError()
-        if data == "m":
-            print("run movies")
-            if data != "m":
-                raise ValueError()
-        if data == "g":
-            print("run geography")
-            if data != "g":
-                raise ValueError()
-        if data == "v":
-            print("run score board")
-            if data != "v":
-                raise ValueError()
+        if data in (option_one, option_two, option_three, option_four): 
+            games()
+        else:
+            raise ValueError()
     except ValueError:
-        print(f"You need to enter s, m, g or v to make a choice. Please try again.")
+        print("\nInvalid choice. Enter s, m, g or v to make a choice.")
+        input("Press enter to choose again.")
+        choose_game()
+
     
 
 
@@ -99,10 +97,7 @@ def main():
     print("----------------------------------------------------------------\n")
 
     get_username()
-    #WANT TO LET THE GET_USERNAME FUNCTION LINGER A FEW SECONDS
-    #WANT TO START A NEW PAGE (REMOVE INTRO)
-    choice = choose_game()
-    run_game(choice)
+    choose_game()
     
 
 main()
