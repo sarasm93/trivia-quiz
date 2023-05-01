@@ -1,6 +1,6 @@
 def get_username():
     """
-    Ask the player for a username
+    Ask the player for a username.
     """
     username = input("                  Please enter a username: ")
     validate_username(username)
@@ -47,38 +47,39 @@ def choose_option():
     """
     print("\n\nChoose a quiz or show the score board")
     print("-------------------------------------\n")
-    print("[s] Trivia about Science")
-    print("[m] Trivia about Movies")
-    print("[g] Trivia about Geography")
-    print("[v] View score board\n\n")
+
+    options_list = ["[s] Trivia about Science", "[m] Trivia about Movies", "[g] Trivia about Geography", "[v] View score board\n\n"]
+    for option in options_list:
+        print(option)
     player_choice = input("Enter your choice: ")
     validate_choice(player_choice)
 
 
 def validate_choice(input_choice):
     """
-    Function to run a game or show the score board, based on 
+    Function to run a game or show the score board, based on
     the choice of the player.
     """
     option_one = "s"
     option_two = "m"
     option_three = "g"
     option_four = "v"
-    
+
     try:
-        if input_choice in (option_one, option_two, option_three, option_four):  
-            options(input_choice)
+        if input_choice in (option_one, option_two, option_three, option_four): 
+            run_option(input_choice)
         else:
             raise ValueError()
     except ValueError:
         print("\nInvalid choice. Enter s, m, g or v to make a choice.")
         input("Press enter to choose again.")
-        choose_option()
+        choose_option() 
 
-    
-def options(input_choice):
+
+def run_option(input_choice):
     """
-    Displaying questions in chosen quiz or score board, based on valid choice by player. 
+    Initiate the right quiz or initiate to show score board, based
+    on valid choice by player.
     """
     # WANT TO START A NEW PAGE (REMOVE OPTIONS)
 
@@ -91,37 +92,9 @@ def options(input_choice):
     if input_choice == "v":
         run_score_board()
 
-def run_science():
-    """
-    """
-    valid = True
 
-    try:
-        for question in question_list:
-            correct_answer = question.pop()
-            for item in question:
-                print(item)
-                player_answer = input("Enter your answer: ")
-                validate_answer(player_answer)
 
-def validate_answer(input_answer):
-    """
-    Validating player answer to question
-    """
-    answer_one = "1"
-    answer_two = "2"
-    answer_three = "3"
-    
-    try:
-        if input_anwser in (answer_one, answer_two, answer_three):  
-            options(input_choice)
-        else:
-            raise ValueError()
-    except ValueError:
-        print("\nInvalid answer. Enter 1, 2 or 3 to answer.")
-        input("Press enter to try again.")
-        options(input_choice)
-        # Another function is supposed to be called (when it is built)
+
 
 def main():
     """
