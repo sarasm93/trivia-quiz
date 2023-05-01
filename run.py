@@ -93,7 +93,77 @@ def run_option(input_choice):
         run_score_board()
 
 
+def run_science():
+    """
+    Display questions for science quiz.
+    """
+    # WANT TO MAKE THE FUNCTION LINKGER A BIT SO THAT PLAYER HAVE TIME TO SEE CORRECT/INCORRECT
+    science_questions = [
+        ["Question 1: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
+        ["Question 2: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
+        ["Question 3: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
+        ["Question 4: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
+        ["Question 5: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "2"],
+        ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
+    ]
 
+    score_tracker = 0
+
+    print(f"\n\nScore: {score_tracker}\n")
+    correct_answer = science_questions[0].pop()
+
+    for question in science_questions[0]:
+        print(question)
+        
+    player_answer = input("Enter your answer: ")
+
+    if player_answer == correct_answer:
+        print("Correct! Well done!")
+        score_tracker += 1
+    else: 
+        print("Incorrect.")
+
+    print(f"\n\nScore: {score_tracker}\n")
+    correct_answer = science_questions[1].pop()
+
+    for question in science_questions[1]:
+        print(question)
+        
+    player_answer = input("Enter your answer: ")
+
+    if player_answer == correct_answer:
+        print("Correct! Well done!")
+        score_tracker += 1
+    else: 
+        print("Incorrect.")
+
+    print(f"\n\nScore: {score_tracker}\n")
+    correct_answer = science_questions[2].pop()
+
+    for question in science_questions[2]:
+        print(question)
+        
+    player_answer = input("Enter your answer: ")
+
+    if player_answer == correct_answer:
+        print("Correct! Well done!")
+        score_tracker += 1
+    else: 
+        print("Incorrect.")
+    
+    print(f"\n\nScore: {score_tracker}\n")
+    correct_answer = science_questions[3].pop()
+
+    for question in science_questions[3]:
+        print(question)
+        
+    player_answer = input("Enter your answer: ")
+
+    if player_answer == correct_answer:
+        print("Correct! Well done!")
+        score_tracker += 1
+    else: 
+        print("Incorrect.")
 
 
 def main():
