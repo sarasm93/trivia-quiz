@@ -64,7 +64,7 @@ def validate_username(input_name):
 def display_options():
     # WANT TO START A NEW PAGE (REMOVE INTRO)
     """
-    Display options menu, to see what options choose game or show score board
+    Display options menu with options to choose a game or display score board.
     """
     print("\n\nChoose a quiz or show the score board")
     print("-------------------------------------\n")
@@ -76,10 +76,9 @@ def display_options():
 
 def choose_option():
     """
-
+    Display input method so player can choose an option from options menu.
     """
-
-        player_choice = input("Enter your choice: ")
+    player_choice = input("Enter your choice: ")
     if validate_choice(player_choice, "s, m, g, or v") is True:
         clear_screen()
         run_option(player_choice)
@@ -412,6 +411,7 @@ def main():
     print("----------------------------------------------------------------\n")
 
     get_username()
+    display_options()
     choose_option()
     
 
