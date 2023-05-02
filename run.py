@@ -95,6 +95,17 @@ def validate_choice(input_choice, valid_options):
     again and (4) removing all '[]' and ','.
     """
     input_choice = input_choice.lower()
+    valid_options_string = str(valid_options)
+
+    # Code on line XXXXXXXXXXX is taken from the below Geeksforgeeks.org page.
+    # The code has been adjusted to fit to this program by changing variable
+    # names and the position to insert new word "or".
+    # https://www.geeksforgeeks.org/python-add-phrase-in-middle-of-string/
+    add_word = "or"
+    words = valid_options_string.split()
+    position = len(words) - 1
+    join_valid_options = " ".join(words[:position] + [add_word] + words[position:])
+    new_valid_options = str(join_valid_options).replace("[", "").replace("]", "")
 
     try:
         if input_choice in (valid_options): 
