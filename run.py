@@ -79,7 +79,7 @@ def choose_option():
     Display input method so player can choose an option from options menu.
     """
     player_choice = input("Enter your choice: ")
-    if validate_choice(player_choice, "s, m, g, or v") is True:
+    if validate_choice(player_choice, ["s", "m", "g", "v"]) is True:
         clear_screen()
         run_option(player_choice)
     else:
@@ -89,7 +89,10 @@ def choose_option():
 def validate_choice(input_choice, valid_options):
     """
     Function to run a game or show the score board, based on
-    the choice of the player.
+    the choice of the player. To make the valid options print nicely
+    to the player, the valid options list re-designed by (1) splitting it,
+    (2) adding "or" to the second to last position, (3) putting it together
+    again and (4) removing all '[]' and ','.
     """
     input_choice = input_choice.lower()
 
@@ -100,7 +103,7 @@ def validate_choice(input_choice, valid_options):
         else:
             raise ValueError()
     except ValueError:
-        print(f"\n\nInvalid choice. Enter {valid_options} to make a choice.")
+        print(f"\n\nInvalid choice. Enter {new_valid_options} to make a choice.")
         return False
 
 
