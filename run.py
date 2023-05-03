@@ -3,9 +3,9 @@ import time
 username = 0
 
 score_boards = [
-    {"Jenny": 10, "GameGuru": 8, "lulu": 9, "Carl": 8}, 
-    {"Jenny": 10, "GameGuru": 8, "lulu": 9, "Carl": 8}, 
-    {"Jenny": 10, "GameGuru": 8, "lulu": 9, "Carl": 8}
+    {"Jenny": 10, "GameGuru": 9, "lulu": 9, "Carl": 8}, 
+    {"lulu": 10, "GameGuru": 8, "Jenny": 7, "Carl": 7}, 
+    {"Jenny": 9, "Carl": 8, "lulu": 6, "GameGuru": 5}
     ]
 
 
@@ -28,40 +28,37 @@ def clear_screen():
     os.system('clear')
 
 
-def sort_score_board(input_board):
+def sort_score_board(input_board, input_index):
     """
-    Function sorting player scores before showed to player.
+    Function sorting player scores before showed to player. Only the dictionary
+    for the quiz played is updated.
     """
-    for board in input_board:
-        sorted_scores = sorted(board.values(), reverse=True)
-        sorted_board = {}
+    dictionary = input_board[input_index]
+    sorted_board = {}
+    sorted_scores = sorted(dictionary.values(), reverse=True)
+    for score in sorted_scores:
+        for key in dictionary.keys():
+            if dictionary[key] == score:
+                sorted_board[key] = dictionary[key]
 
-        for score in sorted_scores:
-            for key in board.keys():
-                if board[key] == score:
-                    sorted_board[key] = board[key]
+    dictionary.clear()
+    dictionary.update(sorted_board)
+ 
 
-    for board in input_board:
-        board.clear()
-        board.update(sorted_board)
-    
-    return input_board
-    
-    
 def run_score_boards():
     """
     Function called when player has choosen to view score board in 
     the options function. Scores are sorted by sort_score_board()-function
     before showed. 
     """
-    sort_score_board(score_boards)
     for board in score_boards:
         for score in board.items():
+            #list(score) FORTSÄTT HÄÄÄR
             print(score)
-    input("Press enter to get back to menu")
+    input("\n\nPress enter to get back to menu")
     display_options()
 
-
+    
 def get_username():
     """
     Ask the player for a username.
@@ -173,7 +170,7 @@ def run_option(input_choice):
     on valid choice by player. 
     """
     input_choice = input_choice.lower()
-    global score_boards
+
     if input_choice == "s":
         clear_screen()
         quiz_name = "SCIENCE TRIVIA"
@@ -189,9 +186,11 @@ def run_option(input_choice):
         ]
         score = run_quiz(science_questions)
         score_boards[0].update([(username, score)])
+        sort_score_board(score_boards, 0)
         print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
+
     if input_choice == "m":
         clear_screen()
         quiz_name = "MOVIE TRIVIA"
@@ -206,9 +205,11 @@ def run_option(input_choice):
         ]
         score = run_quiz(movie_questions)
         score_boards[1].update([(username, score)])
+        sort_score_board(score_boards, 1)
         print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
+
     if input_choice == "g":
         clear_screen()
         quiz_name = "GEOGRAPHY TRIVIA"
@@ -223,12 +224,15 @@ def run_option(input_choice):
         ]
         score = run_quiz(geography_questions)
         score_boards[2].update([(username, score)])
+        sort_score_board(score_boards, 2)
         print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
+
     if input_choice == "v":
         clear_screen()
         run_score_boards()
+
     if input_choice == "q":
         clear_screen()
         run_quit_game()
@@ -265,27 +269,6 @@ def run_quit_game():
     print("Shutting down quiz...\n")
     delay(2)
     clear_screen()
-
-
-"""def run_score_board():
-    
-    # Used these Stackoverflow pages to help me build the loop with range()
-    # and len() and to figure out how to use '*' to remove all '[]', ','' and
-    # '""' from the score board list when printed.
-    # https://stackoverflow.com/questions/48053979/print-2-lists-side-by-side
-    # https://stackoverflow.com/questions/11178061/print-list-without-brackets-in-a-single-row
-    
-    for saved_score in range(len(score_board_science)):
-        print(*score_board_science[saved_score])
-
-    #for saved_score in range(len(score_board_movies)):
-        #print(*score_board_movies[saved_score])
-    
-    #for saved_score in range(len(score_board_geography)):
-        #print(*score_board_geography[saved_score])
-
-    input("\n\nPress enter to get back to menu")
-    choose_option()"""
 
 
 def main():
