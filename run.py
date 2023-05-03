@@ -3,19 +3,28 @@ import time
 username = 0
 
 score_board = [
-    ["Jenny XX", "GameGuru XX", "lulu XX", "Carl XX"], 
+    ["Jenny 10", "GameGuru ", "lulu XX", "Carl XX"], 
     [], 
     []
     ]
+
+
+def delay():
+    """
+    When this function is called, the next code to be displayed is 
+    delayed. This makes user experiance better as the player have more 
+    time to see what happens.
+    """
+    time.sleep(1.2)
 
 
 # The code on line XXXXXXXXXXX(os.system(clear)) is taken from this Stackoverflow page. 
 # https://stackoverflow.com/questions/4810537/how-to-clear-the-screen-in-python
 def clear_screen():
     """
-    Clear screen when called, to make the user experiance better.
+    When this function is called, the screen is cleared. This makes user 
+    experiance better as the the terminal is not so cluttered with text.
     """
-    time.sleep(1.5)
     os.system('clear')
 
 
@@ -56,13 +65,13 @@ def validate_username(input_name):
     
     if valid:
         print("\n                           Lets play!\n\n")
+        delay()
         clear_screen()
     if valid == False:
         get_username()
 
 
 def display_options():
-    # WANT TO START A NEW PAGE (REMOVE INTRO)
     """
     Display options menu with options to choose a game or display score board.
     """
@@ -109,7 +118,6 @@ def validate_choice(input_choice, valid_options):
 
     try:
         if input_choice in (valid_options): 
-            run_option(input_choice)
             return True
         else:
             raise ValueError()
@@ -123,266 +131,63 @@ def run_option(input_choice):
     Initiate the right quiz or initiate to show score board, based
     on valid choice by player.
     """
-    # WANT TO START A NEW PAGE (REMOVE OPTIONS)
+    input_choice = input_choice.lower()
 
     if input_choice == "s":
-        run_science()
+        clear_screen()
+        quiz_name = "SCIENCE TRIVIA"
+        print(f"\n\n{quiz_name}\n\n")
+        science_questions = [
+            ["Question 1: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
+            ["Question 2: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
+            ["Question 3: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
+            ["Question 4: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
+            ["Question 5: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "2"],
+            ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
+        ]
+        score = run_quiz(science_questions)
+        score_board[0].append(f'{username} {score}')
+        print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
+        input("Press enter to get back to menu")
+        display_options()
     if input_choice == "m":
-        run_movies()
+        clear_screen()
+        quiz_name = "MOVIE TRIVIA"
+        print(f"\n\n{quiz_name}\n\n")
+        movie_questions = [
+            ["Question 1: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
+            ["Question 2: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
+            ["Question 3: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
+            ["Question 4: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
+            ["Question 5: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "2"],
+            ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
+        ]
+        score = run_quiz(movie_questions)
+        score_board[1].append(f'{username} {score}')
+        print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
+        input("Press enter to get back to menu")
+        display_options()
     if input_choice == "g":
-        run_geography()
+        clear_screen()
+        quiz_name = "GEOGRAPHY TRIVIA"
+        print(f"\n\n{quiz_name}\n\n")
+        geograpyh_questions = [
+            ["Question 1: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
+            ["Question 2: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
+            ["Question 3: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
+            ["Question 4: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
+            ["Question 5: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "2"],
+            ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
+        ]
+        score = run_quiz(geography_questions)
+        score_board[2].append(f'{username} {score}')
+        score_board.sort()
+        print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
+        input("Press enter to get back to menu")
+        display_options()
     if input_choice == "v":
-        run_score_board()
-
-
-def run_science():
-    """
-    Display questions for science quiz.
-    """
-    # WANT TO MAKE THE FUNCTION LINGER A BIT SO THAT PLAYER HAVE TIME TO SEE CORRECT/INCORRECT
-    science_questions = [
-        ["Question 1: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
-        ["Question 2: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
-        ["Question 3: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
-        ["Question 4: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
-        ["Question 5: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "2"],
-        ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
-    ]
-
-    print("\n\nSCIENCE TRIVIA")
-    player_score = 0
-
-    print(f"\nScore: {player_score}\n")
-    correct_answer = science_questions[0].pop()
-
-    for question in science_questions[0]:
-        print(question)
-        
-    player_answer = input("Enter your answer: ")
-
-    if player_answer == correct_answer:
-        print("Correct! Well done!")
-        player_score += 1
-    else: 
-        print("Incorrect.")
-
-    print(f"\n\nScore: {player_score}\n")
-    correct_answer = science_questions[1].pop()
-
-    for question in science_questions[1]:
-        print(question)
-        
-    player_answer = input("Enter your answer: ")
-
-    if player_answer == correct_answer:
-        print("Correct! Well done!")
-        player_score += 1
-    else: 
-        print("Incorrect.")
-
-    print(f"\n\nScore: {player_score}\n")
-    correct_answer = science_questions[2].pop()
-
-    for question in science_questions[2]:
-        print(question)
-        
-    player_answer = input("Enter your answer: ")
-
-    if player_answer == correct_answer:
-        print("Correct! Well done!")
-        player_score += 1
-    else: 
-        print("Incorrect.")
-    
-    print(f"\n\nScore: {player_score}\n")
-    correct_answer = science_questions[3].pop()
-
-    for question in science_questions[3]:
-        print(question)
-        
-    player_answer = input("Enter your answer: ")
-
-    if player_answer == correct_answer:
-        print("Correct! Well done!")
-        player_score += 1
-    else: 
-        print("Incorrect.")
-
-    print(f"\n\nScore: {player_score}\n")
-    correct_answer = science_questions[4].pop()
-
-    for question in science_questions[4]:
-        print(question)
-        
-    player_answer = input("Enter your answer: ")
-
-    if player_answer == correct_answer:
-        print("Correct! Well done!")
-        player_score += 1
-    else: 
-        print("Incorrect.")
-
-    print(f"\n\nScore: {player_score}\n")
-    correct_answer = science_questions[5].pop()
-
-    for question in science_questions[5]:
-        print(question)
-        
-    player_answer = input("Enter your answer: ")
-
-    if player_answer == correct_answer:
-        print("Correct! Well done!")
-        player_score += 1
-    else: 
-        print("Incorrect.")
-
-    player_username_score = []
-    player_username_score.append(username)
-    player_username_score.append(player_score)
-    save_score_science(player_username_score)
-
-    print(f"\nYou finished the science quiz! Well done! Your score: {player_score}\n")
-    input("Press enter to get back to menu")
-    choose_option()
-
-
-def run_movies():
-    """
-    Display questions for movies quiz.
-    """
-    # WANT TO MAKE THE FUNCTION LINGER A BIT SO THAT PLAYER HAVE TIME TO SEE CORRECT/INCORRECT
-    science_questions = [
-        ["Question 1: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
-        ["Question 2: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
-        ["Question 3: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
-        ["Question 4: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
-        ["Question 5: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "2"],
-        ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
-    ]
-
-    print("\n\nSCIENCE TRIVIA")
-    player_score = 0
-
-    print(f"\nScore: {player_score}\n")
-    correct_answer = movies_questions[0].pop()
-
-    for question in movies_questions[0]:
-        print(question)
-        
-    player_answer = input("Enter your answer: ")
-
-    if player_answer == correct_answer:
-        print("Correct! Well done!")
-        player_score += 1
-    else: 
-        print("Incorrect.")
-
-    print(f"\n\nScore: {player_score}\n")
-    correct_answer = movies_questions[0].pop()
-
-    for question in movies_questions[0]:
-        print(question)
-        
-    player_answer = input("Enter your answer: ")
-
-    if player_answer == correct_answer:
-        print("Correct! Well done!")
-        player_score += 1
-    else: 
-        print("Incorrect.")
-
-    print(f"\n\nScore: {player_score}\n")
-    correct_answer = movies_questions[0].pop()
-
-    for question in movies_questions[0]:
-        print(question)
-        
-    player_answer = input("Enter your answer: ")
-
-    if player_answer == correct_answer:
-        print("Correct! Well done!")
-        player_score += 1
-    else: 
-        print("Incorrect.")
-    
-    print(f"\n\nScore: {player_score}\n")
-    correct_answer = movies_questions[0].pop()
-
-    for question in movies_questions[0]:
-        print(question)
-        
-    player_answer = input("Enter your answer: ")
-
-    if player_answer == correct_answer:
-        print("Correct! Well done!")
-        player_score += 1
-    else: 
-        print("Incorrect.")
-
-    print(f"\n\nScore: {player_score}\n")
-    correct_answer = movies_questions[0].pop()
-
-    for question in movies_questions[0]:
-        print(question)
-        
-    player_answer = input("Enter your answer: ")
-
-    if player_answer == correct_answer:
-        print("Correct! Well done!")
-        player_score += 1
-    else: 
-        print("Incorrect.")
-
-    print(f"\n\nScore: {player_score}\n")
-    correct_answer = movies_questions[0].pop()
-
-    for question in movies_questions[0]:
-        print(question)
-        
-    player_answer = input("Enter your answer: ")
-
-    if player_answer == correct_answer:
-        print("Correct! Well done!")
-        player_score += 1
-    else: 
-        print("Incorrect.")
-
-    player_username_score = []
-    player_username_score.append(username)
-    player_username_score.append(player_score)
-    save_score_movies(player_username_score)
-
-    print(f"\nYou finished the science quiz! Well done! Your score: {player_score}\n")
-    input("Press enter to get back to menu")
-    choose_option()
-
-
-def validate_answer():
-    print("validate")
-
-
-def save_score_science(score):
-    """
-    Function to save player score for science quiz to score board.
-    """
-    global score_board_science
-    score_board_science.append(score)
-
-
-def save_score_movies(score):
-    """
-    Function to save player score for movie quiz to score board.
-    """
-    global score_board_movies
-    score_board_movies.append(score)
-
-
-def save_score_geography(score):
-    """
-    Function to save player score for geography quiz to score board.
-    """
-    global score_board_geography
-    score_board_geography.append(score)
+        clear_screen()
+        print(score_board)
 
 
 def run_score_board():
@@ -407,6 +212,7 @@ def run_score_board():
     input("\n\nPress enter to get back to menu")
     choose_option()
 
+
 def main():
     """
     Run all functions
@@ -427,6 +233,5 @@ def main():
     get_username()
     display_options()
     choose_option()
-    
 
 main()

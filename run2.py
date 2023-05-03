@@ -13,6 +13,7 @@ score_board = [[], [], []]
 
 
 def clear_screen():
+
     time.sleep(3)
     os.system('clear')
 
