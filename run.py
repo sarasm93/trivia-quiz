@@ -83,6 +83,12 @@ def validate_username(input_name):
             if (blank.isspace()) == True:
                 raise ValueError(
                     " It cannot contain blank spaces")
+        for board in score_boards:
+            taken_usernames = board.keys()
+            for name in taken_usernames:
+                if input_name == name:
+                    raise ValueError(
+                        " This username is already taken")
         if len(input_name) == 0:
             raise ValueError(
                 " You didn't enter a username")
@@ -167,7 +173,7 @@ def run_option(input_choice):
     on valid choice by player. 
     """
     input_choice = input_choice.lower()
-
+    global score_boards
     if input_choice == "s":
         clear_screen()
         quiz_name = "SCIENCE TRIVIA"
