@@ -190,6 +190,25 @@ def run_option(input_choice):
         print(score_board)
 
 
+def run_quiz(questions):
+    score = 0
+    for question in questions:
+        correct_answer = question.pop()
+        print(f"Score: {score}\n")
+        for item in question:
+            print(item)
+        option_valid = False
+        while option_valid is False:
+            player_answer = input("Enter your answer: ")
+            option_valid = validate_choice(player_answer, ["1", "2", "3"])
+        if correct_answer == player_answer:
+            print("Correct! Well done!\n\n")
+            score += 1
+        else:
+            print("Incorrect!\n\n")
+    return score
+    
+
 def run_score_board():
     """
     Function to display scores if player chooses to in options function.
