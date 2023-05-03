@@ -3,9 +3,9 @@ import time
 username = 0
 
 score_boards = [
-        [["Jenny 10"], ["GameGuru 8"], ["lulu 9"], ["Carl 8"]],
-        [["Jenny 10"], ["GameGuru 8"], ["lulu 9"], ["Carl 8"]],
-        [["Jenny 10"], ["GameGuru 8"], ["lulu 9"], ["Carl 8"]]
+    {"Jenny": 10, "GameGuru": 8, "lulu": 9, "Carl": 8}, 
+    {"Jenny": 10, "GameGuru": 8, "lulu": 9, "Carl": 8}, 
+    {"Jenny": 10, "GameGuru": 8, "lulu": 9, "Carl": 8}
     ]
 
 
@@ -28,7 +28,38 @@ def clear_screen():
     os.system('clear')
 
 
+def sort_score_board(input_board):
+    """
+    Function sorting player scores before showed to player.
+    """
+    for board in input_board:
+        sorted_scores = sorted(board.values(), reverse=True)
+        sorted_board = {}
 
+        for score in sorted_scores:
+            for key in board.keys():
+                if board[key] == score:
+                    sorted_board[key] = board[key]
+
+    for board in input_board:
+        board.clear()
+        board.update(sorted_board)
+    
+    return input_board
+    
+    
+def run_score_boards():
+    """
+    Function called when player has choosen to view score board in 
+    the options function. Scores are sorted by sort_score_board()-function
+    before showed. 
+    """
+    sort_score_board(score_boards)
+    for board in score_boards:
+        for score in board.items():
+            print(score)
+    input("Press enter to get back to menu")
+    display_options()
 
 
 def get_username():
@@ -151,7 +182,7 @@ def run_option(input_choice):
             ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
         ]
         score = run_quiz(science_questions)
-        sscore_boards[0].append(f'{username} {score}')
+        score_boards[0].update([(username, score)])
         print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
@@ -168,7 +199,7 @@ def run_option(input_choice):
             ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
         ]
         score = run_quiz(movie_questions)
-        score_boards[1].append(f'{username} {score}')
+        score_boards[1].update([(username, score)])
         print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
@@ -185,7 +216,7 @@ def run_option(input_choice):
             ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
         ]
         score = run_quiz(geography_questions)
-        score_boards[2].append(f'{username} {score}')
+        score_boards[2].update([(username, score)])
         print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
