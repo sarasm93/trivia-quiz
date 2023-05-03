@@ -11,16 +11,13 @@ score_board = [
 
 
 
-
-#sort_orders = sorted(orders.items(), key=lambda x: x[1], reverse=True)
-
-def delay():
+def delay(input_time):
     """
     When this function is called, the next code to be displayed is 
     delayed. This makes user experiance better as the player have more 
     time to see what happens.
     """
-    time.sleep(1.2)
+    time.sleep(input_time)
 
 
 # The code on line XXXXXXXXXXX(os.system(clear)) is taken from this Stackoverflow page. 
@@ -70,7 +67,7 @@ def validate_username(input_name):
     
     if valid:
         print("\n                           Lets play!\n\n")
-        delay()
+        delay(1.2)
     if valid == False:
         get_username()
 
@@ -83,7 +80,7 @@ def display_options():
     print("\n\nChoose a quiz or show the score board")
     print("-------------------------------------\n")
 
-    options_list = ["[s] Trivia about Science", "[m] Trivia about Movies", "[g] Trivia about Geography", "[v] View score board\n\n"]
+    options_list = ["[s] Trivia about Science", "[m] Trivia about Movies", "[g] Trivia about Geography", "[v] View score board", "[q] Quit\n\n"]
     for option in options_list:
         print(option)
     choose_option()
@@ -94,7 +91,7 @@ def choose_option():
     Display input method so player can choose an option from options menu.
     """
     player_choice = input("Enter your choice: ")
-    if validate_choice(player_choice, ["s", "m", "g", "v"]) is True:
+    if validate_choice(player_choice, ["s", "m", "g", "v", "q"]) is True:
         clear_screen()
         run_option(player_choice)
     else:
@@ -134,8 +131,8 @@ def validate_choice(input_choice, valid_options):
 
 def run_option(input_choice):
     """
-    Initiate the right quiz or initiate to show score board, based
-    on valid choice by player.
+    Initiate the right quiz, show score board or quit game, based
+    on valid choice by player. 
     """
     input_choice = input_choice.lower()
 
@@ -143,6 +140,7 @@ def run_option(input_choice):
         clear_screen()
         quiz_name = "SCIENCE TRIVIA"
         print(f"\n\n{quiz_name}\n\n")
+        # Last item in each nested list is the correct answer for that question.
         science_questions = [
             ["Question 1: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
             ["Question 2: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
@@ -194,9 +192,16 @@ def run_option(input_choice):
     if input_choice == "v":
         clear_screen()
         run_score_board()
+    if input_choice == "q":
+        clear_screen()
+        run_quit_game()
 
 
 def run_quiz(questions):
+    """
+    When called, prints questions in chosen quiz (first popping of
+    the correct answer, index 4 in question list)
+    """
     score = 0
     for question in questions:
         correct_answer = question.pop()
@@ -213,6 +218,16 @@ def run_quiz(questions):
         else:
             print("Incorrect!\n\n")
     return score
+
+
+def run_quit_game():
+    """
+    Shuts down game when player chooses quit in options menu.
+    """
+    print("\n\nHope you had fun! :)\n\n")
+    print("Shutting down quiz...\n")
+    delay(2)
+    clear_screen()
 
 
 def run_score_board():
