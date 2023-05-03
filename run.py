@@ -3,11 +3,16 @@ import time
 username = 0
 
 score_board = [
-    ["Jenny 10", "GameGuru ", "lulu XX", "Carl XX"], 
-    [], 
-    []
+    {"Jenny": 10, "GameGuru": 9, "lulu": 9, "Carl": 8}, 
+    {"Jenny": 10, "GameGuru": 9, "lulu": 9, "Carl": 8}, 
+    {"Jenny": 10, "GameGuru": 9, "lulu": 9, "Carl": 8}
     ]
 
+
+
+
+
+#sort_orders = sorted(orders.items(), key=lambda x: x[1], reverse=True)
 
 def delay():
     """
@@ -66,7 +71,6 @@ def validate_username(input_name):
     if valid:
         print("\n                           Lets play!\n\n")
         delay()
-        clear_screen()
     if valid == False:
         get_username()
 
@@ -75,12 +79,14 @@ def display_options():
     """
     Display options menu with options to choose a game or display score board.
     """
+    clear_screen()
     print("\n\nChoose a quiz or show the score board")
     print("-------------------------------------\n")
 
     options_list = ["[s] Trivia about Science", "[m] Trivia about Movies", "[g] Trivia about Geography", "[v] View score board\n\n"]
     for option in options_list:
         print(option)
+    choose_option()
 
 
 def choose_option():
@@ -146,7 +152,7 @@ def run_option(input_choice):
             ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
         ]
         score = run_quiz(science_questions)
-        score_board[0].append(f'{username} {score}')
+        score_board[0].update([(username, score)])
         print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
@@ -163,7 +169,7 @@ def run_option(input_choice):
             ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
         ]
         score = run_quiz(movie_questions)
-        score_board[1].append(f'{username} {score}')
+        score_board[1].update([(username, score)])
         print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
@@ -171,7 +177,7 @@ def run_option(input_choice):
         clear_screen()
         quiz_name = "GEOGRAPHY TRIVIA"
         print(f"\n\n{quiz_name}\n\n")
-        geograpyh_questions = [
+        geography_questions = [
             ["Question 1: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
             ["Question 2: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
             ["Question 3: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
@@ -180,14 +186,14 @@ def run_option(input_choice):
             ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
         ]
         score = run_quiz(geography_questions)
-        score_board[2].append(f'{username} {score}')
+        score_board[2].update([(username, score)])
         score_board.sort()
         print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
     if input_choice == "v":
         clear_screen()
-        print(score_board)
+        run_score_board()
 
 
 def run_quiz(questions):
@@ -207,7 +213,7 @@ def run_quiz(questions):
         else:
             print("Incorrect!\n\n")
     return score
-    
+
 
 def run_score_board():
     """
@@ -251,6 +257,5 @@ def main():
 
     get_username()
     display_options()
-    choose_option()
 
 main()
