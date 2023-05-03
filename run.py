@@ -2,13 +2,11 @@ import os
 import time
 username = 0
 
-score_board = [
-    {"Jenny": 10, "GameGuru": 9, "lulu": 9, "Carl": 8}, 
-    {"Jenny": 10, "GameGuru": 9, "lulu": 9, "Carl": 8}, 
-    {"Jenny": 10, "GameGuru": 9, "lulu": 9, "Carl": 8}
+score_boards = [
+        [["Jenny 10"], ["GameGuru 8"], ["lulu 9"], ["Carl 8"]],
+        [["Jenny 10"], ["GameGuru 8"], ["lulu 9"], ["Carl 8"]],
+        [["Jenny 10"], ["GameGuru 8"], ["lulu 9"], ["Carl 8"]]
     ]
-
-
 
 
 def delay(input_time):
@@ -28,6 +26,9 @@ def clear_screen():
     experiance better as the the terminal is not so cluttered with text.
     """
     os.system('clear')
+
+
+
 
 
 def get_username():
@@ -150,7 +151,7 @@ def run_option(input_choice):
             ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
         ]
         score = run_quiz(science_questions)
-        score_board[0].update([(username, score)])
+        sscore_boards[0].append(f'{username} {score}')
         print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
@@ -167,7 +168,7 @@ def run_option(input_choice):
             ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
         ]
         score = run_quiz(movie_questions)
-        score_board[1].update([(username, score)])
+        score_boards[1].append(f'{username} {score}')
         print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
@@ -184,14 +185,13 @@ def run_option(input_choice):
             ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
         ]
         score = run_quiz(geography_questions)
-        score_board[2].update([(username, score)])
-        score_board.sort()
+        score_boards[2].append(f'{username} {score}')
         print(f"\nYou finished the {quiz_name} quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
     if input_choice == "v":
         clear_screen()
-        run_score_board()
+        run_score_boards()
     if input_choice == "q":
         clear_screen()
         run_quit_game()
@@ -230,10 +230,8 @@ def run_quit_game():
     clear_screen()
 
 
-def run_score_board():
-    """
-    Function to display scores if player chooses to in options function.
-    """
+"""def run_score_board():
+    
     # Used these Stackoverflow pages to help me build the loop with range()
     # and len() and to figure out how to use '*' to remove all '[]', ','' and
     # '""' from the score board list when printed.
@@ -250,7 +248,7 @@ def run_score_board():
         #print(*score_board_geography[saved_score])
 
     input("\n\nPress enter to get back to menu")
-    choose_option()
+    choose_option()"""
 
 
 def main():
