@@ -182,7 +182,20 @@ def board_to_list(input_boards):
     # return input_boards
 
 
-
+def board_to_dict(input_boards):
+    """
+    """
+    score_dict = {}
+    for board in input_boards:
+        headers_list = board.pop(0)
+        for player_list in board:
+            player_list.pop(0)
+            print(player_list)
+            for i in range(0, len(player_list), 2):
+                score_dict[player_list[i]] = player_list[i + 1]
+        board.append(headers_list)
+        board.append(score_dict)
+    print(score_dict)
 
     return input_board
         
