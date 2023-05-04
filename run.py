@@ -136,7 +136,7 @@ def validate_choice(input_choice, valid_options):
         return False
 
 
-def sort_score_board(input_board, list_index, dict_index):
+def sort_score_board(input_board, list_index):
     """
     Function sorting dictionary of scores in score board, each time a player
     finishes a quiz. Only the dictionary for the quiz that the player just
@@ -146,7 +146,7 @@ def sort_score_board(input_board, list_index, dict_index):
     # a dictionary of scores. The code has been adjusted to fit to this
     # program by changing variable names.
     # https://stackabuse.com/how-to-sort-dictionary-by-value-in-python/
-    dictionary = input_board[list_index][dict_index]
+    dictionary = input_board[list_index]
     sorted_board = {}
     sorted_scores = sorted(dictionary.values(), reverse=True)
     for score in sorted_scores:
@@ -158,58 +158,17 @@ def sort_score_board(input_board, list_index, dict_index):
     dictionary.update(sorted_board)
 
 
-def board_to_list(input_boards):
+def print_score_board(board, title):
     """
     """
-    input_boards_copy = input_boards
-    for board in input_boards_copy:
-        player_dict = board.pop()
-        for item in player_dict.items():
-            player_as_list = list(item)
-            player_as_list.insert(0, "")
-            board.append(player_as_list)
-    
-    for board in input_boards_copy:
-        table = tb(board, headers='firstrow')
-        print(f"{table}\n\n")
-    # return input_boards
-
-
-def board_to_dict(input_boards):
-    """
-    """
-    score_dict = {}
-    for board in input_boards:
-        headers_list = board.pop(0)
-        for player_list in board:
-            player_list.pop(0)
-            print(player_list)
-            for i in range(0, len(player_list), 2):
-                score_dict[player_list[i]] = player_list[i + 1]
-        board.append(headers_list)
-        board.append(score_dict)
-    print(score_dict)
-
-    return input_board
-        
-        #for player_list in board:
-            #for i in range(0, len(player_list), 2):
-            #score_dict[] = board[+ 1]
-
-
-def run_score_boards():
-    """
-    Function called when player has choosen to view score board in
-    the options function. Scores are sorted by the sort_score_board()-function 
-    directly after finished game. When user chooses to view score boards 
-    (1) scores are turned into separate lists by board_to_list()-function, (2) 
-    when user wants to go back to options menu the scores are gathered in a 
-    dictionary again.
-    """
-    board_to_list(score_boards)
-    input("\n\nPress enter to get back to menu")
-    board_to_dict(score_boards)
-    display_options()
+    headers = [f"{title}", "Player    ", "Score"]
+    data_as_list = [headers]
+    for key in board.keys():
+        user_data = ["", key, board[key]]
+        data_as_list.append(user_data)
+    print(data_as_list)
+    table = tb(data_as_list, headers='firstrow')
+    print(f"{table}\n\n")
 
 
 def run_option(input_choice):
@@ -232,9 +191,9 @@ def run_option(input_choice):
             ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
         ]
         score = run_quiz(science_questions)
-        score_boards[0][1].update([(username, score)])
-        #score_boards[0].update({username: score})
-        sort_score_board(score_boards, 0, 1)
+        # score_boards[0][1].update([(username, score)])
+        score_boards[0].update({username: score})
+        sort_score_board(score_boards, 0)
         print(score_boards)
         print(f"\nYou finished the SCIENCE TRIVIA quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
@@ -252,9 +211,9 @@ def run_option(input_choice):
             ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
         ]
         score = run_quiz(movie_questions)
-        #score_boards[1][1].update({username: score})
-        score_boards[1][1].update([(username, score)])
-        sort_score_board(score_boards, 1, 1)
+        score_boards[1].update({username: score})
+        # score_boards[1][1].update([(username, score)])
+        sort_score_board(score_boards, 1)
         print(f"\nYou finished the MOVIE TRIVIA quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
@@ -271,17 +230,22 @@ def run_option(input_choice):
             ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
         ]
         score = run_quiz(geography_questions)
-        #score_boards[2][1].update({username: score})
-        score_boards[2][1].update([(username, score)])
-        sort_score_board(score_boards, 2, 1)
+        score_boards[2].update({username: score})
+        # score_boards[2][1].update([(username, score)])
+        sort_score_board(score_boards, 2)
         print(f"\nYou finished the GEOGRAPHY TRIVIA quiz! Well done! Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
 
     if input_choice == "v":
         clear_screen()
-        run_score_boards()
-        #print_score_board(score_boards[0], "SCIENCE")
+        # run_score_boards()
+        print_score_board(score_boards[0], "SCIENCE TRIVIA  ")
+        print_score_board(score_boards[1], "MOVIE TRIVIA    ")
+        print_score_board(score_boards[2], "GEOGRAPHY TRIVIA")
+        input("\n\nPress enter to get back to menu")
+        display_options()
+
 
     if input_choice == "q":
         clear_screen()
