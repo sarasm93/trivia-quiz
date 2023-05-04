@@ -5,13 +5,6 @@ from tabulate import tabulate as tb
 username = 0
 
 
-# score_boards = [
-#     [["SCIENCE TRIVIA  ", "Player    ", "Score"], {"Jenny": 10, "GameGuru": 7, "lulu": 7, "Carl": 6}],
-#     [["MOVIE TRIVIA    ", "Player    ", "Score"], {"lulu": 8, "GameGuru": 8, "Jenny": 7, "Carl": 4}],
-#     [["GEOGRAPHY TRIVIA", "Player    ", "Score"], {"Jenny": 9, "Carl": 5, "lulu": 4, "GameGuru": 4}]
-#     ]
-
-
 score_boards = [
     {"Jenny": 10, "GameGuru": 7, "lulu": 7, "Carl": 6},
     {"lulu": 8, "GameGuru": 8, "Jenny": 7, "Carl": 4},
