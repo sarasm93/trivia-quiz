@@ -93,8 +93,8 @@ def display_quiz_options():
     """
     clear_screen()
     print("\n\n                        Quiz menu                        ")
-    print("---------------------------------------------------------\n")
-    print("\nChoose a quiz, show the score board menu or quit the game\n")
+    print("------------------------------------------------------------\n")
+    print("Choose a quiz, show the score board menu or quit the game\n")
     print("Remember - the last score you got in a quiz is the one saved")
     print("           to the score board\n\n")
 
@@ -182,8 +182,8 @@ def display_score_menu():
     """
     print(Style.RESET_ALL)
     clear_screen()
-    print("\n\n                        Score menu                       ")
-    print("---------------------------------------------------------\n")
+    print("\n\n              Score menu             ")
+    print("-------------------------------------\n")
     print("which score board do you want to see?\n")
     options_list = [Fore.YELLOW + "[s] Science score board",
                     Fore.MAGENTA + "[m] Movies score board",
