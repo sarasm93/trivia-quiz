@@ -356,7 +356,7 @@ def main():
     print("                        Want to learn more?                       ")
     print("             Test your trivia knowledge with a quiz!              ")
     print(Fore.GREEN)
-    print("----------------------------------------------------------------\n")
+    print("------------------------------------------------------------------")
     print(Style.RESET_ALL)
     get_username()
     display_options()
