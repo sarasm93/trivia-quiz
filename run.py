@@ -1,6 +1,7 @@
 import os
 import time
 from tabulate import tabulate as tb
+from colorama import Fore, Style
 
 
 class Player:
@@ -77,7 +78,9 @@ def validate_username(input_name):
         valid = False
 
     if valid:
+        print(Fore.MAGENTA)
         print("\n                           Lets play!\n\n")
+        print(Style.RESET_ALL)
         delay(1.2)
     if valid is False:
         get_username()
@@ -91,9 +94,11 @@ def display_options():
     print("\n\nChoose a quiz or show the score board")
     print("-------------------------------------\n")
 
-    options_list = ["[s] Trivia about Science", "[m] Trivia about Movies",
-                    "[g] Trivia about Geography", "[v] View score board",
-                    "[q] Quit\n\n"]
+    options_list = [Fore.YELLOW + "[s] Trivia about Science",
+                    Fore.MAGENTA + "[m] Trivia about Movies",
+                    Fore.CYAN + "[g] Trivia about Geography",
+                    Fore.GREEN + "[v] View score board",
+                    Fore.RED + "[q] Quit\n\n"]
     for option in options_list:
         print(option)
     choose_option()
@@ -103,6 +108,7 @@ def choose_option():
     """
     Asking player to choose an option from the options menu.
     """
+    print(Style.RESET_ALL)
     player_choice = input("Enter your choice: ")
     if validate_choice(player_choice, ["s", "m", "g", "v", "q"]) is True:
         clear_screen()
@@ -138,7 +144,9 @@ def validate_choice(input_choice, options):
         else:
             raise ValueError()
     except ValueError:
+        print(Fore.RED)
         print(f"\n\nInvalid choice. Enter {new_options} to make a choice.")
+        print(Style.RESET_ALL)
         return False
 
 
@@ -191,7 +199,8 @@ def run_option(input_choice):
 
     if input_choice == "s":
         clear_screen()
-        print("\n\nSCIENCE TRIVIA\n\n")
+        print(Fore.YELLOW + "\n\nSCIENCE TRIVIA\n\n")
+        print(Style.RESET_ALL)
         # The last item in each nested list of questions is the correct answer
         # for that question. It´s the same for all the quizes
         # (i.e. choices "s", "m", "g").
@@ -219,14 +228,16 @@ def run_option(input_choice):
         score = run_quiz(science_questions)
         score_boards[0].update({Player.name: score})
         sort_score_board(score_boards, 0)
-        print("\nYou finished the SCIENCE TRIVIA quiz! Well done!")
-        print(f"Your score: {score}\n")
+        print(Fore.YELLOW + "\nYou finished the SCIENCE TRIVIA quiz!")
+        print(f"Well done! Your score: {score}\n")
+        print(Style.RESET_ALL)
         input("Press enter to get back to menu")
         display_options()
 
     if input_choice == "m":
         clear_screen()
-        print("\n\nMOVIE TRIVIA\n\n")
+        print(Fore.MAGENTA + "\n\nMOVIE TRIVIA\n\n")
+        print(Style.RESET_ALL)
         movie_questions = [
             ["Question 1: What....", "[1] Option 1", "[2] Option 2",
                 "[3] Option 3\n", "1"],
@@ -244,14 +255,16 @@ def run_option(input_choice):
         score = run_quiz(movie_questions)
         score_boards[1].update({Player.name: score})
         sort_score_board(score_boards, 1)
-        print("\nYou finished the MOVIE TRIVIA quiz! Well done!")
-        print("Your score: {score}\n")
+        print(Fore.MAGENTA + "\nYou finished the MOVIE TRIVIA quiz!")
+        print(f"Well done! Your score: {score}\n")
+        print(Style.RESET_ALL)
         input("Press enter to get back to menu")
         display_options()
 
     if input_choice == "g":
         clear_screen()
-        print("\n\nGEOGRAPHY TRIVIA\n\n")
+        print(Fore.CYAN + "\n\nGEOGRAPHY TRIVIA\n\n")
+        print(Style.RESET_ALL)
         geography_questions = [
             ["Question 1: What....", "[1] Option 1", "[2] Option 2",
                 "[3] Option 3\n", "1"],
@@ -269,16 +282,18 @@ def run_option(input_choice):
         score = run_quiz(geography_questions)
         score_boards[2].update({Player.name: score})
         sort_score_board(score_boards, 2)
-        print("\nYou finished the GEOGRAPHY TRIVIA quiz! Well done!")
-        print("Your score: {score}\n")
+        print(Fore.CYAN + "\nYou finished the GEOGRAPHY TRIVIA quiz!")
+        print(f"Well done! Your score: {score}\n")
+        print(Style.RESET_ALL)
         input("Press enter to get back to menu")
         display_options()
 
     if input_choice == "v":
         clear_screen()
-        print_score_board(score_boards[0], "SCIENCE TRIVIA  ")
-        print_score_board(score_boards[1], "MOVIE TRIVIA    ")
-        print_score_board(score_boards[2], "GEOGRAPHY TRIVIA")
+        print_score_board(score_boards[0], Fore.YELLOW + "SCIENCE TRIVIA  ")
+        print_score_board(score_boards[1], Fore.MAGENTA + "MOVIE TRIVIA    ")
+        print_score_board(score_boards[2], Fore.CYAN + "GEOGRAPHY TRIVIA")
+        print(Style.RESET_ALL)
         input("\n\nPress enter to get back to menu")
         display_options()
 
@@ -303,10 +318,12 @@ def run_quiz(questions):
             player_answer = input("Enter your answer: ")
             option_valid = validate_choice(player_answer, ["1", "2", "3"])
         if correct_answer == player_answer:
-            print("Correct! Well done!\n\n")
+            print(Fore.GREEN + "CORRECT! Well done!\n\n")
+            print(Style.RESET_ALL)
             score += 1
         else:
-            print("Incorrect!\n\n")
+            print(Fore.RED + "INCORRECT.\n\n")
+            print(Style.RESET_ALL)
     return score
 
 
@@ -314,9 +331,10 @@ def run_quit_game():
     """
     Shuts down game when player chooses quit option "q" in options menu.
     """
-    print("\n\nHope you had fun! :)\n\n")
+    print(Fore.GREEN + "\n\nHope you had fun! :)\n\n")
+    print(Style.RESET_ALL)
     print("Shutting down quiz...\n")
-    delay(2)
+    delay(3)
     clear_screen()
 
 
@@ -325,19 +343,21 @@ def main():
     Start the game by showing introduction, initiating function to ask
     for username and then display options menu.
     """
+    print(Fore.GREEN)
     print("\n\nTTTTTTTTTT   RRRR    IIIIII  VV       VV  IIIIII       AAA")
     print("    TT       R   R     II     VV     VV     II        AA AA")
     print("    TT       R  R      II      VV   VV      II       AA   AA")
     print("    TT       RRR       II       VV VV       II      AAAAAAAAA")
     print("    TT       R  R      II        VVV        II     AA       AA")
     print("    TT       R   R   IIIIII       V       IIIIII  AA         AA\n")
-
     print("----------------------------------------------------------------")
+    print(Fore.YELLOW)
     print("   Did you know that shrimp have their hearts in their heads?   \n")
     print("                       Want to learn more?                      \n")
     print("            Test your trivia knowledge with a quiz!             ")
+    print(Fore.GREEN)
     print("----------------------------------------------------------------\n")
-
+    print(Style.RESET_ALL)
     get_username()
     display_options()
 
