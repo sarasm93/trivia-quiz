@@ -26,14 +26,14 @@ def delay(input_time):
     time.sleep(input_time)
 
 
-def clear_screen():
-    """
-    When this function is called, the screen is cleared. This makes user
-    experiance better as the the terminal is not so cluttered with text.
-    """
+# def clear_screen():
+    # """
+    # When this function is called, the screen is cleared. This makes user
+    # experiance better as the the terminal is not so cluttered with text.
+    # """
     # The code on line XXXXXXXXXXXX is taken from this Stackoverflow page.
     # https://stackoverflow.com/questions/4810537/how-to-clear-the-screen-in-python
-    os.system("clear")
+    # os.system("clear")
 
 
 def get_username():
@@ -90,7 +90,7 @@ def display_options():
     """
     Display options menu with options to choose a game or display score board.
     """
-    clear_screen()
+    os.system("clear")
     print("\n\nChoose a quiz or show the score board")
     print("-------------------------------------\n")
 
@@ -111,7 +111,7 @@ def choose_option():
     print(Style.RESET_ALL)
     player_choice = input("Enter your choice: \n")
     if validate_choice(player_choice, ["s", "m", "g", "v", "q"]) is True:
-        clear_screen()
+        os.system("clear")
         run_option(player_choice)
     else:
         choose_option()
@@ -198,7 +198,7 @@ def run_option(input_choice):
     input_choice = input_choice.lower()
 
     if input_choice == "s":
-        clear_screen()
+        os.system("clear")
         print(Fore.YELLOW + "\n\nSCIENCE TRIVIA\n\n")
         print(Style.RESET_ALL)
         # The last item in each nested list of questions is the correct answer
@@ -235,7 +235,7 @@ def run_option(input_choice):
         display_options()
 
     if input_choice == "m":
-        clear_screen()
+        os.system("clear")
         print(Fore.MAGENTA + "\n\nMOVIE TRIVIA\n\n")
         print(Style.RESET_ALL)
         movie_questions = [
@@ -262,7 +262,7 @@ def run_option(input_choice):
         display_options()
 
     if input_choice == "g":
-        clear_screen()
+        os.system("clear")
         print(Fore.CYAN + "\n\nGEOGRAPHY TRIVIA\n\n")
         print(Style.RESET_ALL)
         geography_questions = [
@@ -289,7 +289,7 @@ def run_option(input_choice):
         display_options()
 
     if input_choice == "v":
-        clear_screen()
+        os.system("clear")
         print_score_board(score_boards[0], Fore.YELLOW + "SCIENCE TRIVIA  ")
         print_score_board(score_boards[1], Fore.MAGENTA + "MOVIE TRIVIA    ")
         print_score_board(score_boards[2], Fore.CYAN + "GEOGRAPHY TRIVIA")
@@ -298,7 +298,7 @@ def run_option(input_choice):
         display_options()
 
     if input_choice == "q":
-        clear_screen()
+        os.system("clear")
         run_quit_game()
 
 
@@ -335,7 +335,7 @@ def run_quit_game():
     print(Style.RESET_ALL)
     print("Shutting down quiz...\n")
     delay(3)
-    clear_screen()
+    os.system("clear")
 
 
 def main():
