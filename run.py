@@ -209,24 +209,25 @@ def run_score_board(input_choice):
     input_choice = input_choice.lower()
 
     if input_choice == "s":
-        print_score_board(score_boards[0], Fore.YELLOW + "SCIENCE TRIVIA")
+        print_score_board(score_boards[0], Fore.YELLOW + "\n\nSCIENCE TRIVIA")
         print(Style.RESET_ALL)
         input("\n\nPress enter to get back to score menu\n")
         clear_screen()
         display_score_menu()
     if input_choice == "m":
-        print_score_board(score_boards[1], Fore.MAGENTA + "MOVIE TRIVIA")
+        print_score_board(score_boards[1], Fore.MAGENTA + "\n\nMOVIE TRIVIA")
         print(Style.RESET_ALL)
         input("\n\nPress enter to get back to score menu\n")
         clear_screen()
         display_score_menu()
     if input_choice == "g":
-        print_score_board(score_boards[2], Fore.CYAN + "GEOGRAPHY TRIVIA")
+        print_score_board(score_boards[2], Fore.CYAN + "\n\nGEOGRAPHY TRIVIA")
         print(Style.RESET_ALL)
         input("\n\nPress enter to get back to score menu\n")
         clear_screen()
         display_score_menu()
     if input_choice == "b":
+        print(Style.RESET_ALL)
         clear_screen()
         display_options()
 
@@ -349,7 +350,7 @@ def run_option(input_choice):
 
     if input_choice == "v":
         clear_screen()
-        choose_score_board()
+        display_score_menu()
 
     if input_choice == "q":
         clear_screen()
