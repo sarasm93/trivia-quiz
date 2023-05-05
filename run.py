@@ -4,7 +4,6 @@ from tabulate import tabulate as tb
 
 username = 0
 
-
 score_boards = [
     {"Jenny": 10, "GameGuru": 7, "lulu": 7, "Carl": 6},
     {"lulu": 8, "GameGuru": 8, "Jenny": 7, "Carl": 4},
@@ -23,10 +22,10 @@ def delay(input_time):
 
 def clear_screen():
     """
-    When this function is called, the screen is cleared. This makes user 
+    When this function is called, the screen is cleared. This makes user
     experiance better as the the terminal is not so cluttered with text.
     """
-    # The code on line XXXXXXXXXXXX is taken from this Stackoverflow page. 
+    # The code on line XXXXXXXXXXXX is taken from this Stackoverflow page.
     # https://stackoverflow.com/questions/4810537/how-to-clear-the-screen-in-python
     os.system('clear')
 
@@ -42,8 +41,9 @@ def get_username():
 
 def validate_username(input_name):
     """
-    Validate username by checking that minimum two and maximum 10
-    characteres were entered.
+    Validate username by checking that a username is entered, no blank
+    spaces are used, the chosen username is not already taken, and that
+     minimum two and maximum 10 characteres are entered.
     """
     valid = True
 
@@ -71,7 +71,7 @@ def validate_username(input_name):
         print(f"\n     Invalid username: {e}.")
         print("                        Please try again.\n")
         valid = False
-    
+
     if valid:
         print("\n                           Lets play!\n\n")
         delay(1.2)
@@ -87,7 +87,9 @@ def display_options():
     print("\n\nChoose a quiz or show the score board")
     print("-------------------------------------\n")
 
-    options_list = ["[s] Trivia about Science", "[m] Trivia about Movies", "[g] Trivia about Geography", "[v] View score board", "[q] Quit\n\n"]
+    options_list = ["[s] Trivia about Science", "[m] Trivia about Movies",
+                    "[g] Trivia about Geography", "[v] View score board",
+                    "[q] Quit\n\n"]
     for option in options_list:
         print(option)
     choose_option()
@@ -95,7 +97,7 @@ def display_options():
 
 def choose_option():
     """
-    Display input method so player can choose an option from options menu.
+    Asking player to choose an option from the options menu.
     """
     player_choice = input("Enter your choice: ")
     if validate_choice(player_choice, ["s", "m", "g", "v", "q"]) is True:
@@ -105,40 +107,40 @@ def choose_option():
         choose_option()
 
 
-def validate_choice(input_choice, valid_options):
+def validate_choice(input_choice, options):
     """
     Function to run a game or show the score board, based on
-    the choice of the player. To make the valid options print nicely
+    player choice. To make the valid options print nicely
     to the player, the valid options list is re-designed by (1) splitting it,
-    (2) adding "or" to the second to last position, (3) putting it together
-    again and (4) removing all '[]' and ','.
+    (2) adding "or" to the second to last position, (3) putting it back
+    together again and (4) removing all '[]' and ','.
     """
     # Code on line XXXXXXXXXXX is taken from the below Geeksforgeeks.org page.
     # The code has been adjusted to fit to this program by changing variable
     # names and the position to insert new word "or".
     # https://www.geeksforgeeks.org/python-add-phrase-in-middle-of-string/
     input_choice = input_choice.lower()
-    valid_options_string = str(valid_options)
+    options_string = str(options)
 
     add_word = "or"
-    words = valid_options_string.split()
+    words = options_string.split()
     position = len(words) - 1
-    join_valid_options = " ".join(words[:position] + [add_word] + words[position:])
-    new_valid_options = str(join_valid_options).replace("[", "").replace("]", "")
+    join_options = " ".join(words[:position] + [add_word] + words[position:])
+    new_options = str(join_options).replace("[", "").replace("]", "")
 
     try:
-        if input_choice in (valid_options): 
+        if input_choice in (options):
             return True
         else:
             raise ValueError()
     except ValueError:
-        print(f"\n\nInvalid choice. Enter {new_valid_options} to make a choice.")
+        print(f"\n\nInvalid choice. Enter {new_options} to make a choice.")
         return False
 
 
 def sort_score_board(input_board, list_index):
     """
-    Function sorting dictionary of scores in score board, each time a player
+    Function sorting dictionary of scores in score board each time a player
     finishes a quiz. Only the dictionary for the quiz that the player just
     played is sorted.
     """
@@ -158,16 +160,15 @@ def sort_score_board(input_board, list_index):
     dictionary.update(sorted_board)
 
 
-def print_score_board(board, title):
+def print_score_board(input_board, title):
     """
     """
     headers = [f"{title}", "Player    ", "Score"]
-    data_as_list = [headers]
-    for key in board.keys():
-        user_data = ["", key, board[key]]
-        data_as_list.append(user_data)
-    print(data_as_list)
-    table = tb(data_as_list, headers='firstrow')
+    scores_as_list = [headers]
+    for key in input_board.keys():
+        player_data = ["", key, input_board[key]]
+        scores_as_list.append(player_data)
+    table = tb(scores_as_list, headers='firstrow')
     print(f"{table}\n\n")
 
 
@@ -180,72 +181,90 @@ def run_option(input_choice):
 
     if input_choice == "s":
         clear_screen()
-        print(f"\n\nSCIENCE TRIVIA\n\n")
-        # The last item in each nested list of questions is the correct answer for that question.
+        print("\n\nSCIENCE TRIVIA\n\n")
+        # The last item in each nested list of questions is the correct answer
+        # for that question. It´s the same for all the quizes
+        # (i.e. choices "s", "m", "g").
         science_questions = [
-            ["Question 1: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
-            ["Question 2: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
-            ["Question 3: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
-            ["Question 4: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
-            ["Question 5: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "2"],
-            ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
+            ["Question 1: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "1"],
+            ["Question 2: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "3"],
+            ["Question 3: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "3"],
+            ["Question 4: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "1"],
+            ["Question 5: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "2"],
+            ["Question 6: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "3"]
         ]
         score = run_quiz(science_questions)
-        # score_boards[0][1].update([(username, score)])
         score_boards[0].update({username: score})
         sort_score_board(score_boards, 0)
         print(score_boards)
-        print(f"\nYou finished the SCIENCE TRIVIA quiz! Well done! Your score: {score}\n")
+        print("\nYou finished the SCIENCE TRIVIA quiz! Well done!")
+        print(f"Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
 
     if input_choice == "m":
         clear_screen()
-        print(f"\n\nMOVIE TRIVIA\n\n")
+        print("\n\nMOVIE TRIVIA\n\n")
         movie_questions = [
-            ["Question 1: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
-            ["Question 2: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
-            ["Question 3: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
-            ["Question 4: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
-            ["Question 5: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "2"],
-            ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
+            ["Question 1: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "1"],
+            ["Question 2: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "3"],
+            ["Question 3: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "3"],
+            ["Question 4: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "1"],
+            ["Question 5: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "2"],
+            ["Question 6: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "3"]
         ]
         score = run_quiz(movie_questions)
         score_boards[1].update({username: score})
-        # score_boards[1][1].update([(username, score)])
         sort_score_board(score_boards, 1)
-        print(f"\nYou finished the MOVIE TRIVIA quiz! Well done! Your score: {score}\n")
+        print("\nYou finished the MOVIE TRIVIA quiz! Well done!")
+        print("Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
 
     if input_choice == "g":
         clear_screen()
-        print(f"\n\nGEOGRAPHY TRIVIA\n\n")
+        print("\n\nGEOGRAPHY TRIVIA\n\n")
         geography_questions = [
-            ["Question 1: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
-            ["Question 2: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
-            ["Question 3: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"],
-            ["Question 4: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "1"],
-            ["Question 5: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "2"],
-            ["Question 6: What....", "[1] Option 1", "[2] Option 2", "[3] Option 3\n", "3"]
+            ["Question 1: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "1"],
+            ["Question 2: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "3"],
+            ["Question 3: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "3"],
+            ["Question 4: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "1"],
+            ["Question 5: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "2"],
+            ["Question 6: What....", "[1] Option 1", "[2] Option 2",
+                "[3] Option 3\n", "3"]
         ]
         score = run_quiz(geography_questions)
         score_boards[2].update({username: score})
-        # score_boards[2][1].update([(username, score)])
         sort_score_board(score_boards, 2)
-        print(f"\nYou finished the GEOGRAPHY TRIVIA quiz! Well done! Your score: {score}\n")
+        print("\nYou finished the GEOGRAPHY TRIVIA quiz! Well done!")
+        print("Your score: {score}\n")
         input("Press enter to get back to menu")
         display_options()
 
     if input_choice == "v":
         clear_screen()
-        # run_score_boards()
         print_score_board(score_boards[0], "SCIENCE TRIVIA  ")
         print_score_board(score_boards[1], "MOVIE TRIVIA    ")
         print_score_board(score_boards[2], "GEOGRAPHY TRIVIA")
         input("\n\nPress enter to get back to menu")
         display_options()
-
 
     if input_choice == "q":
         clear_screen()
@@ -254,8 +273,8 @@ def run_option(input_choice):
 
 def run_quiz(questions):
     """
-    When called, prints questions in chosen quiz (first popping of
-    the correct answer, index 4 in question list)
+    When called this function prints questions in chosen quiz (first popping of
+    the correct answer (index 4 in question list).
     """
     score = 0
     for question in questions:
@@ -277,7 +296,7 @@ def run_quiz(questions):
 
 def run_quit_game():
     """
-    Shuts down game when player chooses quit in options menu.
+    Shuts down game when player chooses quit option "q" in options menu.
     """
     print("\n\nHope you had fun! :)\n\n")
     print("Shutting down quiz...\n")
@@ -287,7 +306,8 @@ def run_quit_game():
 
 def main():
     """
-    Run all functions
+    Start the game by showing introduction, initiating function to ask
+    for username and then display options menu.
     """
     print("\n\nTTTTTTTTTT   RRRR    IIIIII  VV       VV  IIIIII       AAA")
     print("    TT       R   R     II     VV     VV     II        AA AA")
