@@ -192,6 +192,17 @@ def display_score_menu():
     choose_score_board()
 
 
+def choose_score_board():
+    """
+    """
+    player_choice = input("Enter your choice: \n")
+    if validate_choice(player_choice, ["s", "m", "g", "b"]) is True:
+        clear_screen()
+        run_score_board(player_choice)
+    else:
+        choose_score_board()
+
+
 
 
 
