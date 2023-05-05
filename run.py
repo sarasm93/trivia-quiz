@@ -196,23 +196,29 @@ def run_option(input_choice):
         # for that question. It´s the same for all the quizes
         # (i.e. choices "s", "m", "g").
         science_questions = [
-            ["Question 1: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "1"],
-            ["Question 2: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "3"],
-            ["Question 3: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "3"],
-            ["Question 4: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "1"],
-            ["Question 5: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "2"],
-            ["Question 6: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "3"]
+            ["Question 1: What color is the sunset on Mars?", "[1] Yellow",
+                "[2] Red", "[3] Blue\n", "3"],
+            ["Question 2: What is the largest organ in the human body?",
+                "[1] Brain", "[2] Skin", "[3] Liver\n", "2"],
+            ["Question 3: How many elements does the periodic table contain?",
+                "[1] 101", "[2] 118", "[3] 89\n", "2"],
+            ["Question 4: What is the world's most poisonous spider?",
+                "[1] Brown recluse", "[2] Sydney funnel spider",
+                "[3] Brazilian wandering spider\n", "3"],
+            ["Question 5: What metal is the best conductor of electricity?",
+                "[1] Silver", "[2] Gold", "[3] Copper\n", "1"],
+            ["Question 6: What is the black hole in the Milky Way called?",
+                "[1] Gemini B*", "[2] Sagittarius A*",
+                "[3] Capricorn C*\n", "2"],
+            ["Question 7: What is the fastest animal in the world?",
+                "[1] Peregrine Falcon", "[2] Cheetah",
+                "[3] American Antelope\n", "1"],
+            ["Question 8: Which hormone is often called the 'love hormone'?",
+                "[1] Oxytocin", "[2] Oestrogen", "[3] Serotonin\n", "1"]
         ]
         score = run_quiz(science_questions)
         score_boards[0].update({Player.name: score})
         sort_score_board(score_boards, 0)
-        print(score_boards)
         print("\nYou finished the SCIENCE TRIVIA quiz! Well done!")
         print(f"Your score: {score}\n")
         input("Press enter to get back to menu")
