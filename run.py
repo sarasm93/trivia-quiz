@@ -26,14 +26,14 @@ def delay(input_time):
     time.sleep(input_time)
 
 
-# def clear_screen():
-    # """
-    # When this function is called, the screen is cleared. This makes user
-    # experiance better as the the terminal is not so cluttered with text.
-    # """
+def clear_screen():
+    """
+    When this function is called, the screen is cleared. This makes user
+    experiance better as the the terminal is not so cluttered with text.
+    """
     # The code on line XXXXXXXXXXXX is taken from this Stackoverflow page.
     # https://stackoverflow.com/questions/4810537/how-to-clear-the-screen-in-python
-    # os.system("clear")
+    os.system("clear")
 
 
 def get_username():
@@ -90,9 +90,9 @@ def display_options():
     """
     Display options menu with options to choose a game or display score board.
     """
-    os.system("clear")
-    print("\n\nChoose a quiz or show the score board")
-    print("-------------------------------------\n")
+    clear_screen()
+    print("\n\nChoose a quiz, show the score board menu or quit the game")
+    print("-------------------------------------------------------------\n")
 
     options_list = [Fore.YELLOW + "[s] Trivia about Science",
                     Fore.MAGENTA + "[m] Trivia about Movies",
@@ -111,7 +111,7 @@ def choose_option():
     print(Style.RESET_ALL)
     player_choice = input("Enter your choice: \n")
     if validate_choice(player_choice, ["s", "m", "g", "v", "q"]) is True:
-        os.system("clear")
+        clear_screen()
         run_option(player_choice)
     else:
         choose_option()
@@ -172,6 +172,29 @@ def sort_score_board(input_board, list_index):
     dictionary.update(sorted_board)
 
 
+def display_score_menu():
+    """
+    Asking player to choose a score board to be displayed.
+    """
+    print(Style.RESET_ALL)
+    clear_screen()
+    print("\n\nScore menu")
+    print("----------\n")
+    print("which score board do you want to see?\n")
+    options_list = [Fore.YELLOW + "[s] Science score board",
+                    Fore.MAGENTA + "[m] Movies score board",
+                    Fore.CYAN + "[g] Geography score board",
+                    Fore.RED + "[b] Back to quiz menu\n\n"]
+    print(Style.RESET_ALL)
+
+    for option in options_list:
+        print(option)
+    choose_score_board()
+
+
+
+
+
 def print_score_board(input_board, title):
     """
     When player chooses option "v" in options menu, this function is run to
@@ -198,7 +221,7 @@ def run_option(input_choice):
     input_choice = input_choice.lower()
 
     if input_choice == "s":
-        os.system("clear")
+        clear_screen()
         print(Fore.YELLOW + "\n\nSCIENCE TRIVIA\n\n")
         print(Style.RESET_ALL)
         # The last item in each nested list of questions is the correct answer
@@ -235,7 +258,7 @@ def run_option(input_choice):
         display_options()
 
     if input_choice == "m":
-        os.system("clear")
+        clear_screen()
         print(Fore.MAGENTA + "\n\nMOVIE TRIVIA\n\n")
         print(Style.RESET_ALL)
         movie_questions = [
@@ -262,7 +285,7 @@ def run_option(input_choice):
         display_options()
 
     if input_choice == "g":
-        os.system("clear")
+        clear_screen()
         print(Fore.CYAN + "\n\nGEOGRAPHY TRIVIA\n\n")
         print(Style.RESET_ALL)
         geography_questions = [
@@ -289,16 +312,11 @@ def run_option(input_choice):
         display_options()
 
     if input_choice == "v":
-        os.system("clear")
-        print_score_board(score_boards[0], Fore.YELLOW + "SCIENCE TRIVIA  ")
-        print_score_board(score_boards[1], Fore.MAGENTA + "MOVIE TRIVIA    ")
-        print_score_board(score_boards[2], Fore.CYAN + "GEOGRAPHY TRIVIA")
-        print(Style.RESET_ALL)
-        input("\n\nPress enter to get back to menu\n")
-        display_options()
+        clear_screen()
+        choose_score_board()
 
     if input_choice == "q":
-        os.system("clear")
+        clear_screen()
         run_quit_game()
 
 
@@ -335,7 +353,7 @@ def run_quit_game():
     print(Style.RESET_ALL)
     print("Shutting down quiz...\n")
     delay(3)
-    os.system("clear")
+    clear_screen()
 
 
 def main():
