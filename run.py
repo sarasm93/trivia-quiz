@@ -2,13 +2,18 @@ import os
 import time
 from tabulate import tabulate as tb
 
-username = 0
+
+class Player:
+    """
+    Class to create username variable that can be used in functions.
+    """
+    name = 0
+
 
 score_boards = [
     {"Jenny": 10, "GameGuru": 7, "lulu": 7, "Carl": 6},
     {"lulu": 8, "GameGuru": 8, "Jenny": 7, "Carl": 4},
-    {"Jenny": 9, "Carl": 5, "lulu": 4, "GameGuru": 4}
-]
+    {"Jenny": 9, "Carl": 5, "lulu": 4, "GameGuru": 4}]
 
 
 def delay(input_time):
@@ -34,9 +39,8 @@ def get_username():
     """
     Ask the player for a username.
     """
-    global username
-    username = input("                  Please enter a username: ")
-    validate_username(username)
+    Player.name = input("                  Please enter a username: ")
+    validate_username(Player.name)
 
 
 def validate_username(input_name):
@@ -206,7 +210,7 @@ def run_option(input_choice):
                 "[3] Option 3\n", "3"]
         ]
         score = run_quiz(science_questions)
-        score_boards[0].update({username: score})
+        score_boards[0].update({Player.name: score})
         sort_score_board(score_boards, 0)
         print(score_boards)
         print("\nYou finished the SCIENCE TRIVIA quiz! Well done!")
@@ -232,7 +236,7 @@ def run_option(input_choice):
                 "[3] Option 3\n", "3"]
         ]
         score = run_quiz(movie_questions)
-        score_boards[1].update({username: score})
+        score_boards[1].update({Player.name: score})
         sort_score_board(score_boards, 1)
         print("\nYou finished the MOVIE TRIVIA quiz! Well done!")
         print("Your score: {score}\n")
@@ -257,7 +261,7 @@ def run_option(input_choice):
                 "[3] Option 3\n", "3"]
         ]
         score = run_quiz(geography_questions)
-        score_boards[2].update({username: score})
+        score_boards[2].update({Player.name: score})
         sort_score_board(score_boards, 2)
         print("\nYou finished the GEOGRAPHY TRIVIA quiz! Well done!")
         print("Your score: {score}\n")
