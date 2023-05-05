@@ -344,7 +344,6 @@ def main():
     for username and then display options menu.
     """
     print(Fore.GREEN)
-    print("\n--------------------------------------------------------------\n")
     print("\n\nTTTTTTTTTT   RRRR    IIIIII  VV       VV  IIIIII       AAA")
     print("    TT       R   R     II     VV     VV     II        AA AA")
     print("    TT       R  R      II      VV   VV      II       AA   AA")
