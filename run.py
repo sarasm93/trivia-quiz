@@ -40,7 +40,7 @@ def get_username():
     """
     Ask the player for a username.
     """
-    Player.name = input("                  Please enter a username: ")
+    Player.name = input("                  Please enter a username: \n")
     validate_username(Player.name)
 
 
@@ -109,7 +109,7 @@ def choose_option():
     Asking player to choose an option from the options menu.
     """
     print(Style.RESET_ALL)
-    player_choice = input("Enter your choice: ")
+    player_choice = input("Enter your choice: \n")
     if validate_choice(player_choice, ["s", "m", "g", "v", "q"]) is True:
         clear_screen()
         run_option(player_choice)
@@ -231,7 +231,7 @@ def run_option(input_choice):
         print(Fore.YELLOW + "\nYou finished the SCIENCE TRIVIA quiz!")
         print(f"Well done! Your score: {score}\n")
         print(Style.RESET_ALL)
-        input("Press enter to get back to menu")
+        input("Press enter to get back to menu\n")
         display_options()
 
     if input_choice == "m":
@@ -258,7 +258,7 @@ def run_option(input_choice):
         print(Fore.MAGENTA + "\nYou finished the MOVIE TRIVIA quiz!")
         print(f"Well done! Your score: {score}\n")
         print(Style.RESET_ALL)
-        input("Press enter to get back to menu")
+        input("Press enter to get back to menu\n")
         display_options()
 
     if input_choice == "g":
@@ -285,7 +285,7 @@ def run_option(input_choice):
         print(Fore.CYAN + "\nYou finished the GEOGRAPHY TRIVIA quiz!")
         print(f"Well done! Your score: {score}\n")
         print(Style.RESET_ALL)
-        input("Press enter to get back to menu")
+        input("Press enter to get back to menu\n")
         display_options()
 
     if input_choice == "v":
@@ -294,7 +294,7 @@ def run_option(input_choice):
         print_score_board(score_boards[1], Fore.MAGENTA + "MOVIE TRIVIA    ")
         print_score_board(score_boards[2], Fore.CYAN + "GEOGRAPHY TRIVIA")
         print(Style.RESET_ALL)
-        input("\n\nPress enter to get back to menu")
+        input("\n\nPress enter to get back to menu\n")
         display_options()
 
     if input_choice == "q":
@@ -315,7 +315,7 @@ def run_quiz(questions):
             print(item)
         option_valid = False
         while option_valid is False:
-            player_answer = input("Enter your answer: ")
+            player_answer = input("Enter your answer: \n")
             option_valid = validate_choice(player_answer, ["1", "2", "3"])
         if correct_answer == player_answer:
             print(Fore.GREEN + "CORRECT! Well done!\n\n")
