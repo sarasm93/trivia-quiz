@@ -40,7 +40,7 @@ def get_username():
     """
     Ask the player for a username.
     """
-    Player.name = input("                  Please enter a username: \n")
+    Player.name = input("Please enter a username: \n")
     validate_username(Player.name)
 
 
@@ -344,6 +344,7 @@ def main():
     for username and then display options menu.
     """
     print(Fore.GREEN)
+    print("\n--------------------------------------------------------------\n")
     print("\n\nTTTTTTTTTT   RRRR    IIIIII  VV       VV  IIIIII       AAA")
     print("    TT       R   R     II     VV     VV     II        AA AA")
     print("    TT       R  R      II      VV   VV      II       AA   AA")
@@ -352,9 +353,9 @@ def main():
     print("    TT       R   R   IIIIII       V       IIIIII  AA         AA\n")
     print("----------------------------------------------------------------")
     print(Fore.YELLOW)
-    print("   Did you know that shrimp have their hearts in their heads?   \n")
-    print("                       Want to learn more?                      \n")
-    print("            Test your trivia knowledge with a quiz!             ")
+    print("    Did you know that shrimp have their hearts in their heads?    ")
+    print("                        Want to learn more?                       ")
+    print("             Test your trivia knowledge with a quiz!              ")
     print(Fore.GREEN)
     print("----------------------------------------------------------------\n")
     print(Style.RESET_ALL)
