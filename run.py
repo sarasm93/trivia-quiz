@@ -48,7 +48,7 @@ def validate_username(input_name):
     """
     Validate username by checking that a username is entered, no blank
     spaces are used, the chosen username is not already taken, and that
-     minimum two and maximum 10 characteres are entered.
+    minimum two and maximum 10 characteres are entered.
     """
     valid = True
 
@@ -86,18 +86,22 @@ def validate_username(input_name):
         get_username()
 
 
-def display_options():
+def display_quiz_options():
     """
-    Display options menu with options to choose a game or display score board.
+    Display quiz menu with options to choose a game, display
+    score board menu or quit game.
     """
     clear_screen()
-    print("\n\nChoose a quiz, show the score board menu or quit the game")
-    print("-------------------------------------------------------------\n")
+    print("                          Quiz menu                          ")
+    print("---------------------------------------------------------\n")
+    print("\n\nChoose a quiz, show the score board menu or quit the game\n")
+    print("Remember - the last score you got in a quiz is the one saved")
+    print("           to the score board\n\n")
 
     options_list = [Fore.YELLOW + "[s] Trivia about Science",
                     Fore.MAGENTA + "[m] Trivia about Movies",
                     Fore.CYAN + "[g] Trivia about Geography",
-                    Fore.GREEN + "[v] View score board",
+                    Fore.GREEN + "[v] View score board menu",
                     Fore.RED + "[q] Quit\n\n"]
     for option in options_list:
         print(option)
@@ -106,7 +110,7 @@ def display_options():
 
 def choose_option():
     """
-    Asking player to choose an option from the options menu.
+    Asking player to choose an option from the quiz menu.
     """
     print(Style.RESET_ALL)
     player_choice = input("Enter your choice: \n")
@@ -119,8 +123,7 @@ def choose_option():
 
 def validate_choice(input_choice, options):
     """
-    Function to run a game or show the score board, based on
-    player choice. To make the valid options print nicely
+    Function to validate player choice. To make the valid options print nicely
     to the player, the valid options list is re-designed by (1) splitting it,
     (2) adding "or" to the second to last position, (3) putting it back
     together again and (4) removing all '[]' and ','.
@@ -174,18 +177,18 @@ def sort_score_board(input_board, list_index):
 
 def display_score_menu():
     """
-    Asking player to choose a score board to be displayed.
+    Display score board menu with options to choose a score board
+    or get back to quiz menu.
     """
     print(Style.RESET_ALL)
     clear_screen()
-    print("\n\nScore menu")
-    print("----------\n")
+    print("                          Score menu                         ")
+    print("---------------------------------------------------------\n")
     print("which score board do you want to see?\n")
     options_list = [Fore.YELLOW + "[s] Science score board",
                     Fore.MAGENTA + "[m] Movies score board",
                     Fore.CYAN + "[g] Geography score board",
                     Fore.RED + "[b] Back to quiz menu\n\n"]
-    print(Style.RESET_ALL)
 
     for option in options_list:
         print(option)
@@ -194,7 +197,9 @@ def display_score_menu():
 
 def choose_score_board():
     """
+    Asking player to choose an option from the score board menu.
     """
+    print(Style.RESET_ALL)
     player_choice = input("Enter your choice: \n")
     if validate_choice(player_choice, ["s", "m", "g", "b"]) is True:
         clear_screen()
@@ -205,6 +210,8 @@ def choose_score_board():
 
 def run_score_board(input_choice):
     """
+    Initiate the right score board or get back to score board menu, based
+    on valid choice by player.
     """
     input_choice = input_choice.lower()
 
@@ -229,7 +236,7 @@ def run_score_board(input_choice):
     if input_choice == "b":
         print(Style.RESET_ALL)
         clear_screen()
-        display_options()
+        display_quiz_options()
 
 
 def print_score_board(input_board, title):
@@ -241,7 +248,7 @@ def print_score_board(input_board, title):
     # tables. The code has been adjusted to fit to this program by
     # changing variable names.
     # https://www.askpython.com/python-modules/tabulate-tables-in-python
-    headers = [f"{title}", "Player    ", "Score"]
+    headers = [f"{title}", "\n\nPlayer    ", "\n\nScore"]
     scores_as_list = [headers]
     for key in input_board.keys():
         player_data = ["", key, input_board[key]]
@@ -252,7 +259,7 @@ def print_score_board(input_board, title):
 
 def run_option(input_choice):
     """
-    Initiate the right quiz, show score board or quit game, based
+    Initiate the right quiz, show score board menu or quit game, based
     on valid choice by player.
     """
     input_choice = input_choice.lower()
@@ -292,7 +299,7 @@ def run_option(input_choice):
         print(f"Well done! Your score: {score}\n")
         print(Style.RESET_ALL)
         input("Press enter to get back to menu\n")
-        display_options()
+        display_quiz_options()
 
     if input_choice == "m":
         clear_screen()
@@ -319,7 +326,7 @@ def run_option(input_choice):
         print(f"Well done! Your score: {score}\n")
         print(Style.RESET_ALL)
         input("Press enter to get back to menu\n")
-        display_options()
+        display_quiz_options()
 
     if input_choice == "g":
         clear_screen()
@@ -346,7 +353,7 @@ def run_option(input_choice):
         print(f"Well done! Your score: {score}\n")
         print(Style.RESET_ALL)
         input("Press enter to get back to menu\n")
-        display_options()
+        display_quiz_options()
 
     if input_choice == "v":
         clear_screen()
@@ -414,7 +421,8 @@ def main():
     print("------------------------------------------------------------------")
     print(Style.RESET_ALL)
     get_username()
-    display_options()
+    display_quiz_options()
 
 
-main()
+if __name__ == '__main__':
+    main()
