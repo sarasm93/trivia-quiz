@@ -203,7 +203,32 @@ def choose_score_board():
         choose_score_board()
 
 
+def run_score_board(input_choice):
+    """
+    """
+    input_choice = input_choice.lower()
 
+    if input_choice == "s":
+        print_score_board(score_boards[0], Fore.YELLOW + "SCIENCE TRIVIA")
+        print(Style.RESET_ALL)
+        input("\n\nPress enter to get back to score menu\n")
+        clear_screen()
+        display_score_menu()
+    if input_choice == "m":
+        print_score_board(score_boards[1], Fore.MAGENTA + "MOVIE TRIVIA")
+        print(Style.RESET_ALL)
+        input("\n\nPress enter to get back to score menu\n")
+        clear_screen()
+        display_score_menu()
+    if input_choice == "g":
+        print_score_board(score_boards[2], Fore.CYAN + "GEOGRAPHY TRIVIA")
+        print(Style.RESET_ALL)
+        input("\n\nPress enter to get back to score menu\n")
+        clear_screen()
+        display_score_menu()
+    if input_choice == "b":
+        clear_screen()
+        display_options()
 
 
 def print_score_board(input_board, title):
