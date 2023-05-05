@@ -33,7 +33,7 @@ def clear_screen():
     """
     # The code on line XXXXXXXXXXXX is taken from this Stackoverflow page.
     # https://stackoverflow.com/questions/4810537/how-to-clear-the-screen-in-python
-    os.system('clear')
+    os.system("clear")
 
 
 def get_username():
@@ -42,6 +42,11 @@ def get_username():
     """
     Player.name = input("                  Please enter a username: \n")
     validate_username(Player.name)
+    print(Fore.MAGENTA)
+    print("\n                           Lets play!\n\n")
+    print(Style.RESET_ALL)
+    delay(1.2)
+    clear_screen()
 
 
 def validate_username(input_name):
@@ -77,11 +82,6 @@ def validate_username(input_name):
         print("                        Please try again.\n")
         valid = False
 
-    if valid:
-        print(Fore.MAGENTA)
-        print("\n                           Lets play!\n\n")
-        print(Style.RESET_ALL)
-        delay(1.2)
     if valid is False:
         get_username()
 
