@@ -162,7 +162,13 @@ def sort_score_board(input_board, list_index):
 
 def print_score_board(input_board, title):
     """
+    When player chooses option "v" in options menu, this function is run to
+    show the score board for each quiz in a table.
     """
+    # Code on line XXXXXXXXXXX is taken from the below page to create the
+    # tables. The code has been adjusted to fit to this program by
+    # changing variable names.
+    # https://www.askpython.com/python-modules/tabulate-tables-in-python
     headers = [f"{title}", "Player    ", "Score"]
     scores_as_list = [headers]
     for key in input_board.keys():
