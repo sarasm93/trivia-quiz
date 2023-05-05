@@ -42,11 +42,6 @@ def get_username():
     """
     Player.name = input("                  Please enter a username: \n")
     validate_username(Player.name)
-    print(Fore.MAGENTA)
-    print("\n                           Lets play!\n\n")
-    print(Style.RESET_ALL)
-    delay(1.2)
-    clear_screen()
 
 
 def validate_username(input_name):
@@ -82,6 +77,11 @@ def validate_username(input_name):
         print("                        Please try again.\n")
         valid = False
 
+    if valid:
+        print(Fore.MAGENTA)
+        print("\n                           Lets play!\n\n")
+        print(Style.RESET_ALL)
+        delay(1.2)
     if valid is False:
         get_username()
 
