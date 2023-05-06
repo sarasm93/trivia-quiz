@@ -12,9 +12,9 @@ class Player:
 
 
 score_boards = [
-    {"Jenny": 10, "GameGuru": 7, "lulu": 7, "Carl": 6},
-    {"lulu": 8, "GameGuru": 8, "Jenny": 7, "Carl": 4},
-    {"Jenny": 9, "Carl": 5, "lulu": 4, "GameGuru": 4}]
+    {"Jenny": 8, "GameGuru": 5, "lulu": 5, "Carl": 4},
+    {"lulu": 6, "GameGuru": 6, "Jenny": 5, "Carl": 2},
+    {"Jenny": 7, "Carl": 3, "lulu": 2, "GameGuru": 2}]
 
 
 def delay(input_time):
@@ -31,7 +31,7 @@ def clear_screen():
     When this function is called, the screen is cleared. This makes user
     experiance better as the the terminal is not so cluttered with text.
     """
-    # The code on line XXXXXXXXXXXX is taken from this Stackoverflow page.
+    # The code on line 36 is taken from this Stackoverflow page.
     # https://stackoverflow.com/questions/4810537/how-to-clear-the-screen-in-python
     os.system("clear")
 
@@ -128,7 +128,7 @@ def validate_choice(input_choice, options):
     (2) adding "or" to the second to last position, (3) putting it back
     together again and (4) removing all '[]' and ','.
     """
-    # Code on line XXXXXXXXXXX is taken from the below Geeksforgeeks.org page.
+    # Code on line 138-142 is taken from the below Geeksforgeeks.org page.
     # The code has been adjusted to fit to this program by changing variable
     # names and the position to insert new word "or".
     # https://www.geeksforgeeks.org/python-add-phrase-in-middle-of-string/
@@ -159,9 +159,9 @@ def sort_score_board(input_board, list_index):
     finishes a quiz. Only the dictionary for the quiz that the player just
     played is sorted.
     """
-    # Code on line XXXXXXXXXXX is taken from the below page to loop through
+    # Code on line 167-172 is taken from the below page to loop through
     # a dictionary of scores. The code has been adjusted to fit to this
-    # program by changing variable names.
+    # program by changing variable names and by adding "reverse=True)"
     # https://stackabuse.com/how-to-sort-dictionary-by-value-in-python/
     dictionary = input_board[list_index]
     sorted_board = {}
@@ -244,16 +244,12 @@ def print_score_board(input_board, title):
     When player chooses option "v" in options menu, this function is run to
     show the score board for each quiz in a table.
     """
-    # Code on line XXXXXXXXXXX is taken from the below page to create the
-    # tables. The code has been adjusted to fit to this program by
-    # changing variable names.
-    # https://www.askpython.com/python-modules/tabulate-tables-in-python
     headers = [f"{title}", "\n\nPlayer    ", "\n\nScore"]
     scores_as_list = [headers]
     for key in input_board.keys():
         player_data = ["", key, input_board[key]]
         scores_as_list.append(player_data)
-    table = tb(scores_as_list, headers='firstrow')
+    table = tb(scores_as_list, headers="firstrow")
     print(f"{table}\n\n")
 
 
