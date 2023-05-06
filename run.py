@@ -148,7 +148,7 @@ def validate_choice(input_choice, options):
             raise ValueError()
     except ValueError:
         print(Fore.RED)
-        print(f"\n\nInvalid choice. Enter {new_options} to make a choice.")
+        print(f"Invalid choice. Enter {new_options} to make a choice.")
         print(Style.RESET_ALL)
         return False
 
@@ -272,24 +272,24 @@ def run_option(input_choice):
         # for that question. It´s the same for all the quizes
         # (i.e. choices "s", "m", "g").
         science_questions = [
-            ["Question 1: What color is the sunset on Mars?", "[1] Yellow",
+            ["QUESTION 1: What color is the sunset on Mars?", "[1] Yellow",
                 "[2] Red", "[3] Blue\n", "3"],
-            ["Question 2: What is the largest organ in the human body?",
+            ["QUESTION 2: What is the largest organ in the human body?",
                 "[1] Brain", "[2] Skin", "[3] Liver\n", "2"],
-            ["Question 3: How many elements does the periodic table contain?",
+            ["QUESTION 3: How many elements does the periodic table contain?",
                 "[1] 101", "[2] 118", "[3] 89\n", "2"],
-            ["Question 4: What is the world's most poisonous spider?",
+            ["QUESTION 4: What is the world's most poisonous spider?",
                 "[1] Brown recluse", "[2] Sydney funnel spider",
                 "[3] Brazilian wandering spider\n", "3"],
-            ["Question 5: What metal is the best conductor of electricity?",
+            ["QUESTION 5: What metal is the best conductor of electricity?",
                 "[1] Silver", "[2] Gold", "[3] Copper\n", "1"],
-            ["Question 6: What is the black hole in the Milky Way called?",
+            ["QUESTION 6: What is the black hole in the Milky Way called?",
                 "[1] Gemini B*", "[2] Sagittarius A*",
                 "[3] Capricorn C*\n", "2"],
-            ["Question 7: What is the fastest animal in the world?",
+            ["QUESTION 7: What is the fastest animal in the world?",
                 "[1] Peregrine Falcon", "[2] Cheetah",
                 "[3] American Antelope\n", "1"],
-            ["Question 8: Which hormone is often called the 'love hormone'?",
+            ["QUESTION 8: Which hormone is often called the 'love hormone'?",
                 "[1] Oxytocin", "[2] Oestrogen", "[3] Serotonin\n", "1"]
         ]
         score = run_quiz(science_questions)
@@ -306,18 +306,24 @@ def run_option(input_choice):
         print(Fore.MAGENTA + "\n\nMOVIE TRIVIA\n\n")
         print(Style.RESET_ALL)
         movie_questions = [
-            ["Question 1: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "1"],
-            ["Question 2: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "3"],
-            ["Question 3: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "3"],
-            ["Question 4: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "1"],
-            ["Question 5: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "2"],
-            ["Question 6: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "3"]
+            ["QUESTION 1: In which fictional place does Frozen take place?",
+                "[1] Haven", "[2] Arendelle", "[3] Winterfell\n", "2"],
+            ["QUESTION 2: What was the first James Bond movie ever made?",
+                "[1] Thunderball", "[2] Dr. No", "[3] Goldfinger\n", "2"],
+            ["QUESTION 3: How many Pixar animated films have been released?",
+                "[1] 18", "[2] 36", "[3] 26\n", "3"],
+            ["QUESTION 4: When did the Lion King premiere?",
+                "[1] 1997", "[2] 1994", "[3] 1989\n", "2"],
+            ["QUESTION 5: IThe code in Matrix comes from what food recipes?",
+                "[1] Sushi", "[2] Dumplings", "[3] Pad thai\n", "1"],
+            ["QUESTION 6: How many Oscars has Meryl Streep won?",
+                "[1] 1", "[2] 2", "[3] 3\n", "3"],
+            ["QUESTION 7: What item is in every Fight Club scene?",
+                "[1] A Coca-Cola can", "[2] A Starbucks cup",
+                "[3] A Dunkin' donut\n", "2"],
+            ["QUESTION 8: What is the highest-grossing movie of all time?",
+                "[1] Avatar", "[2] Titanic",
+                "[3] Star Wars: The Force Awakens\n", "1"]
         ]
         score = run_quiz(movie_questions)
         score_boards[1].update({Player.name: score})
@@ -333,18 +339,22 @@ def run_option(input_choice):
         print(Fore.CYAN + "\n\nGEOGRAPHY TRIVIA\n\n")
         print(Style.RESET_ALL)
         geography_questions = [
-            ["Question 1: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "1"],
-            ["Question 2: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "3"],
-            ["Question 3: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "3"],
-            ["Question 4: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "1"],
-            ["Question 5: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "2"],
-            ["Question 6: What....", "[1] Option 1", "[2] Option 2",
-                "[3] Option 3\n", "3"]
+            ["QUESTION 1: What is Earth's largest continent?",
+                "[1] Asia", "[2] Africa", "[3] Antarctica\n", "1"],
+            ["QUESTION 2: What is the highest waterfall in Europe?",
+                "[1] Kjelfossen", "[2] Krimml", "[3] Triberg\n", "2"],
+            ["QUESTION 3: What is the smallest country in South America?",
+                "[1] Bolivia", "[2] Guyana", "[3] Suriname\n", "3"],
+            ["QUESTION 4: What US state is home to Yellowstone National Park?",
+                "[1] Utah", "[2] Wyoming", "[3] Colorado\n", "2"],
+            ["QUESTION 5: Which African nation has the most pyramids?",
+                "[1] Algeria", "[2] Egypt", "[3] Sudan\n", "3"],
+            ["QUESTION 6: What country has the most coastline?",
+                "[1] Canada", "[2] United States", "[3] Indonesia\n", "1"],
+            ["QUESTION 7: What European country is home to Transylvania?",
+                "[1] Romania", "[2] Slovania", "[3] Bulgaria\n", "1"],
+            ["QUESTION 8: What is America's largest city by surface area?",
+                "[1] Los Angeles", "[2] Yakuta", "[3] New York\n", "2"]
         ]
         score = run_quiz(geography_questions)
         score_boards[2].update({Player.name: score})

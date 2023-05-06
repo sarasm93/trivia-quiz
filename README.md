@@ -1,23 +1,23 @@
-#**TRIVIA QUIZ**
+# **TRIVIA QUIZ**
 
-##**Features**
+## **Features**
 
-###**Existing features**
+### **Existing features**
 
-###**Future features**
+### **Future features**
 
-##**Testing**
+## **Testing**
 
-###**Validator testing**
+### **Validator testing**
 
-###**Resolved problems**
+### **Resolved problems**
 
-###**Bugs**
+### **Bugs**
 
-##**Deployment**
+## **Deployment**
 
-##**Credits**
+## **Credits**
 
-###**Content and design**
+### **Content and design**
 
-##**Acknowledgements**
+## **Acknowledgements**
