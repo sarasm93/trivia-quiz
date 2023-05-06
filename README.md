@@ -20,6 +20,7 @@ Expansion of the game:
 
 ### **Bugs**
 
+
 No other bugs have been idenitified in the deployed version.
 
 ## **Deployment**
@@ -27,6 +28,22 @@ You can find the link to the live site [here](LÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄN
 
 The site was deployed to Heroku with the following steps:
 
+1. Log in to GitHub
+2. Find the right repository and open it with Gitpod.
+3. Make sure you have removed any unused imported packages from your python code file and that you have uninstalled the packages. 
+4. Make sure you have added \n to the end of all input()-methods in your code (otherwise the text will not show up in the terminal). For example data = input("Please enter data here:\n")
+5. Create a new file named "requirements.txt". In the file, create a list of all the dependencies that the project needs to run, so that they will be installed by Heroku. Create the list by typing 'pip3 freeze > requirements.txt', in the terminal and press enter. This updates the file with all the dependencies.  
+6. Make sure you save all changes made in previous steps and commit and push to GitHub.
+7. Log in to your Heroku account at their website. From your Heroku dashboard, create a new app by clicking the "New"-button on the right hand side and select the "Create new app"-option. If it´s the first time you create an app, there will be a "Create new add"-button in the middle of the page instead.
+
+
+
+
+5. In the app you created, you need to create an environment variable, called Config Var in Heroku. This is done under the "Settings"-tab in the top menu. Click the tab. On the settings page scroll down to the Config Vars-section and click the "Reveal Config Vars"-button.
+6. In the input field "KEY", type in "PORT" to name the Config Var. In the input field "VALUES" type in "8000". Then click the "Add"-button. NÅGOT MEEEEEEEEER?
+7. Scroll down to the "Buildpacks"-section and add two buildpacks by clicking the "Add buildpack"-button First select Python and click "Add". Then click the "Add buildpack"-button again, select nodejs and click "Add".
+8. Now scroll back up to the top menu and select the "Deploy"-tab. Scroll to the methods-section and select GitHub by clicking on that  Om du inte redan har beräkftat flr Heroku att du vill koppla til Github, kilcka på Connetct to Github. Sen, i sektionen Connect to Github - sök efter namnet på ditt Github repositry i sökrutan. Klicka på Connect-button som dyker upp när Heroku har hittat ditt repositry. 
+9. Sroll further down and choose either to deploy automatically by clicking the "Enable Automatic Deploys" or deploy manually by clicking the "Deploy Branch"-button. When de deployment is finished you can click the "View"-button to view the game. 
 
 
 
