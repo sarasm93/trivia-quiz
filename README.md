@@ -1,5 +1,9 @@
 # **TRIVIA QUIZ**
+The TRIVIA QUIZ is a quiz game. It is a Python terminal game running in the Code Institute mock terminal on Heroku. 
 
+The TRIVIA QUIZ is for everyone who´d like to increase their general knowledge in a fun way. The aim with the quiz is to increase the player´s knowledge in three differents subjects - science, movies and geography. The game can be played asmany times as the player wants, making it possible for the user to really have a chance to learn.
+
+![A image of the deployed game in the Code Institute Heroku terminal](start LÄÄÄÄÄÄÄÄÄÄNK)
 
 You can find the site [here](LÄÄÄÄÄÄÄÄÄÄÄÄNK).
 
@@ -15,6 +19,11 @@ Expansion of the game:
 - Add levels to each quiz - easy, medium, hard
 
 ## **Data model**
+There are three quiz categories in the game. For each quiz category I used a list of nested lists to store the questions. Each nested list contains a question, three different answer options and the correct answer. The correct answer is always the last value of the list and is poped of the list each time list is displayed to the player. All of the question lists are located inside the `run_option`-function. 
+
+Each quiz category has a related score board. Each score board is a dictionary. All the dictionaries are nested inside the same list (called `score_boards`). Everytime the player has finished a quiz the reached score is entered into the dictionary related to that quiz together with the player username as a key:value-pair. The reason for coosing a dictonary was that I wanted to be able to sort the scores without loosing track of which player scored each specific score.
+    
+To be able to access the username in several functions without using a global variable, I used a small Player class to store it.
 
 ## **Testing**
 Git was used for version control. Gitpod was used to write the code.
@@ -87,17 +96,17 @@ I used [the Love Sandwiches project](https://learn.codeinstitute.net/courses/cou
 
 [This geeksforgeeks.org page](https://www.geeksforgeeks.org/python-string-isspace-method/) was used to help me figure out how to check for blank spaces in the username, i.e. by using the isspace()-method and iterate through the username put into the `validate_username`-function. 
 
-In the `validate_choice`-function, I wanted the message informing the player of invalid input to be clean and nice. Instead of showing the `valid_options`-list in the terminal when printing the message, for example `["s", "m", "g", "v"]`, I wanted it to look like this `'s', 'm', 'g', or 'v'`. In order to do this I used code from [this geeksforgeeks.org page](https://www.geeksforgeeks.org/python-add-phrase-in-middle-of-string/) to be able to insert an `or`-string into the list before printing the message. It was done by re-designing the list in three steps: (1) splitting it, (2) adding "or" to the second to last position and (3) putting it back together again. After this I also needed to remove the `[]` around the list and `,` between the options. To understand how to do this I used [this blog post](https://blog.finxter.com/how-to-print-a-list-without-brackets-and-commas-in-python/) to learn more about the `replace`-method for strings and how to use it to make a list look cleaner when printed.
+In the `validate_choice`-function, I wanted the message informing the player of invalid input to be clean and nice. Instead of showing the `valid_options`-list in the terminal when printing the message, for example `["s", "m", "g", "v"]`, I wanted it to look like this `'s', 'm', 'g', or 'v'`. In order to do this I used code from [this geeksforgeeks.org page](https://www.geeksforgeeks.org/python-add-phrase-in-middle-of-string/)(placed on line 127-131 in the program) to be able to insert an `or`-string into the list before printing the message. It was done by re-designing the list in three steps: (1) splitting it, (2) adding "or" to the second to last position and (3) putting it back together again. After this I also needed to remove the `[]` around the list and `,` between the options. To understand how to do this I used [this blog post](https://blog.finxter.com/how-to-print-a-list-without-brackets-and-commas-in-python/) to learn more about the `replace`-method for strings and how to use it to make a list look cleaner when printed.
 
 I used [this askpython.com page](https://www.askpython.com/python-modules/tabulate-tables-in-python) and [this pypi.org page](https://pypi.org/project/tabulate/) to learn how to create simple tables with the tabulate package which resulted in this line of code to make the table look good: `table = tb(scores_as_list, headers="firstrow")`. 
 
-Code on line 167-172 is taken from [this stackabuse.com page](https://stackabuse.com/how-to-sort-dictionary-by-value-in-python/). The code is used to loop through a dictionary of scores in the `score_boards` list of dictionarys. The code has been adjusted to fit my program by changing variable names.
+When creating the `sort_score_board`-function [this https://docs.python.org/](https://docs.python.org/3/howto/sorting.html) together with [this Programiz.com page](https://www.programiz.com/python-programming/methods/list/sort) was used to learn how to sort the score dictionaries in descending order, using the `sorted`-method together with the `reverse` parameter with a value of `True`. Code on line 169-174 in the `sort_score_board`-function is taken from [this stackabuse.com page](https://stackabuse.com/how-to-sort-dictionary-by-value-in-python/). The code is used to loop through a dictionary of scores in the `score_boards` list of dictionarys. The code has been adjusted to fit my program by changing variable names. 
 
 The code on line 36 to clear the screen/user window is taken from [this Stackoverflow page](https://stackoverflow.com/questions/4810537/how-to-clear-the-screen-in-python).
 
 [This](https://sports-hangman.herokuapp.com/) peer portfolio project inspired me to have different catagories of questions (i.e. different games).
 
-The readme-file for the Code Institute scope project [showed here](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+PE_PAGPPF+2021_Q2/courseware/b3378fc1159e43e3b70916fdefdfae51/605f34e006594dc4ae19f5e60ec75e2e/) was used as inspiration for the content of the readme.md file. 
+The readme.md-files for the Code Institute scope project [showed here](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+PE_PAGPPF+2021_Q2/courseware/b3378fc1159e43e3b70916fdefdfae51/605f34e006594dc4ae19f5e60ec75e2e/) and the [Love Running website](https://github.com/Code-Institute-Solutions/readme-template) was used as inspiration for the content of the readme.md file for this project. 
 
 The following external python libraries were used in this project:
 - [tabulate](https://pypi.org/project/tabulate/) - to display each score board in a simple table.

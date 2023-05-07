@@ -117,7 +117,7 @@ def validate_choice(input_choice, options):
     (2) adding "or" to the second to last position, (3) putting it back
     together again and (4) removing all '[]' and ','.
     """
-    # Code on line 138-142 is taken from the below Geeksforgeeks.org page.
+    # Code on line 127-131 is taken from the below Geeksforgeeks.org page.
     # The code has been adjusted to fit to this program by changing variable
     # names and the position to insert new word "or".
     # https://www.geeksforgeeks.org/python-add-phrase-in-middle-of-string/
@@ -161,7 +161,7 @@ def sort_score_board(input_board, list_index):
     finishes a quiz. Only the dictionary for the quiz that the player just
     played is sorted.
     """
-    # Code on line 167-172 is taken from the below page to loop through
+    # Code on line 169-174 is taken from the below page to loop through
     # a dictionary of scores. The code has been adjusted to fit to this
     # program by changing variable names and by adding "reverse=True)"
     # https://stackabuse.com/how-to-sort-dictionary-by-value-in-python/
