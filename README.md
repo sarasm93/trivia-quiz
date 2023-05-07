@@ -3,7 +3,7 @@ The TRIVIA QUIZ is a quiz game. It is a Python terminal game running in the Code
 
 The TRIVIA QUIZ is for everyone who´d like to increase their general knowledge in a fun way. The aim with the quiz is to increase the player´s knowledge in three differents subjects - science, movies and geography. The game can be played asmany times as the player wants, making it possible for the user to really have a chance to learn.
 
-![A image of the deployed game in the Code Institute Heroku terminal](start LÄÄÄÄÄÄÄÄÄÄNK)
+![A image of the deployed game in the Code Institute Heroku terminal](documentation/trivia-quiz-start.png)
 
 You can find the site [here](LÄÄÄÄÄÄÄÄÄÄÄÄNK).
 
@@ -49,13 +49,13 @@ I have validated my code with the [CI Python Linter](https://pep8ci.herokuapp.co
 I had the above errors in mind when continuing building the project, to not cause them again. When the code was finished I tested it with CI Python Linter again. The deployed code returns no errors when validated.
 
 ### **Resolved problems**
-stora broblam med score board inte vill fungera när man har sparat ett score; tittar på score board med option v; gör en quiz till; och sen försöker titta på score board. Detta gave upphov till TypeError. När detta problem uppstod bestod the `score_boards`-variable tre nested listor (en för varje guiz) och i varje nested lista fanns en lista med information om quizet och ett dictionary som alla player scores adderades till när spelaren gjort quizet. Det såg ut såhär:  
+When building the game I had problems with the variable storing the player scores. After finishing one quiz the saving of the score worked fine and the saved score was displayed in the score board. But when another quiz was finished and  inte vill fungera när man har sparat ett score; tittar på score board med option v; gör en quiz till; och sen försöker titta på score board. Detta gave upphov till TypeError. När detta problem uppstod bestod the `score_boards`-variable tre nested listor (en för varje guiz) och i varje nested lista fanns en lista med information om quizet och ett dictionary som alla player scores adderades till när spelaren gjort quizet. Det såg ut såhär:  
 
-BIIIIIIILD
+![A image of the score boards variable as a list with nested lists and dictionaries](documentation/score_board_list_and_dict.png)
 
 Genom mycket manuell testning verkade problemet vara score boarden och att varje nested lista besotd av både en lista och ett dictonary. Att jag använde denna syntax var för att direkt kunna använda `score_board`-variabeln till att skapa tabeller för varje board when the player chooses option `v` in the options menu. The list in each nested list, for example `["SCIENCE TRIVIA  ", "Player    ", "Score"]` was supposed to be used as the header in each table. But adding a header in this way is not nesseccary. So to solve this problem I redesigned the `score_board`-variable to only be one list with nested dictionaries, like this:  
 
-BIIIIIIIIIIILD
+![A image of the score boards variable as a list with nested dictionaries](documentation/score_board_only_dict.png)
 
 Hade STORA problem med att få till validate_choice-functionen. Provade med if, data == option, valid = true som ändras till false + kör spel. Provade att ändra till != + raise Error. Men inget funkade, följde inte logiken. Provade sen att lägga till else, ta bort valid = true/false och göra en lista för options och använda in keyword. Då funkade det. Men jag fattade inte varför jag inte fick det till att funka först. 
 
@@ -73,7 +73,7 @@ When validating the username, at first I forgot to handle blank spaces (which I 
 
 To display the questions in a quiz the `run_option`-function in the `choose_option`-function has to be called. When manually testing the program when building it, the questions in a quiz would not stop displaying after all six of them had been answered. The program was put through Python Tutor which showed that after the last question was answered the program went to the `validate_choice`-function and ran the if-statment in it. Then I noticed that the `run_option`-function was called from this function as well, causing the questions to display over and over. To solve this I just removed the `run_option`-function in the `validate_choice`-function. 
 
-BIIIIIIIIIIILDD  SOM DU TOG PÅ KODEN. 
+![A image of the run_option function in the wrong place in the code](documentation/bug_run_option.png)
 
 When creating the quiz, at first I stored the username in a global variable. But this gave a warning in the Gitpod workspace which reminded me of that using global variables might not be best practise. To solve this I created a class called 'Player' and put the username variable inside it. 
 
@@ -126,6 +126,8 @@ The quiz questions were taken from these websites:
 - science quiz: [Radiotimes.com](https://www.radiotimes.com/quizzes/pub-quiz-science/), [Greatwolf.com](https://www.greatwolf.com/blog/science-trivia-questions/), [Icebreakerideas.com](https://icebreakerideas.com/science-trivia/), [Triviawhizz.com](https://triviawhizz.com/trivia-questions/space), [Quiztriviagames.com](https://www.quiztriviagames.com/human-body-quiz/), [Usefultrivia.com](https://www.usefultrivia.com/science_trivia/animal_trivia_index.html)
 - movie quiz: [Buzzfeed.com](https://www.buzzfeed.com/kellyrissman/movie-trivia-questions), [rd.com](https://www.rd.com/article/movie-trivia-facts/) 
 - geography quiz: [Usefultrivia.com](https://www.usefultrivia.com/geography_trivia/)
+
+[Tinypng.com](https://tinypng.com/) was used to compress the images in the readme.md file. 
 
 ## **Acknowledgements**
 I would like to thank my mentor Antonio Rodriguez for guiding me when building this site, for example helping me with how to refactor repetative code and how to clear the screen/user window and delay the program at specific points in the game. 
