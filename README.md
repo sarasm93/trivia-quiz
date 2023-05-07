@@ -45,17 +45,18 @@ The player choice is validated. If the player enters a invalid choice the player
 ![A image of an alert message to the player when entering a invalid choice](documentation/trivia-quiz-invalid-quiz-choice.png)
 
 #### **The quizes - displaying questions**
+Each quiz (options "s", "m" and "g" in the main quiz menu) is structured in the same way. 
+When the player has chosen a quiz option in the main quiz menu, it is taken to the questions to be answered. There is a header with the quiz name, so that the player is ensured that it has been taken to the quiz it chose. Then one question at a time is displayed. A new question is not displayed until the current is answered which is useful as it makes the player really think about what to answer before moving on. Above each question there is a score tracker showing the player score for that quiz. This is useful to the player as it allows the user keep track of the score during the game. 
 
 ![A image of a quiz game when the first question is displayed](documentation/trivia-quiz-quiz-questions.png)
 
+If a question is answered correctly, the player is informed by a message saying "CORRECT! Well done!" in green color. If the answer is incorrect the messages says "Incorrect." in red color. The messages are colored in intuitive colors green (correct) and red (incorrect) which also make them eye-catching to the player.  
+
 ![A image of one correctly answered and one incorrectly answered question](documentation/trivia-quiz-correct-incorrect.png)
 
+The player answer is validated. If the player enters a invalid answer the player will be alerted by a message informing the player of what went wrong. This limitation and message is useful to the player as it makes it impossible to enter a wrong answer by accidentally entering a answer that isn´t even one of the alternatives. The messages are printed in red, to make them stand out and be eye-catching to the player. 
+
 ![A image of an alert message to the player when entering a invalid answer](documentation/trivia-quiz-invalid-answer.png)
-
-
-VIlket värde har denna feature för användaren. Fokus på vad användaren vill åstadkomma, och varför mitt projekt är bästa projektet att åstadkomma detta.
-
-You will need to explain what value each of the features provides for the user, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 
 #### **Score menu**
 
@@ -63,6 +64,7 @@ You will need to explain what value each of the features provides for the user, 
 ![A image of the score menu with options](documentation/trivia-quiz-score-menu.png)
 
 #### **Score table**
+Each score table (options "s", "m" and "g" in the score menu) is structured in the same way. 
 
 ![A image of a score table displaying player scores](documentation/trivia-quiz-score-table.png)
 
