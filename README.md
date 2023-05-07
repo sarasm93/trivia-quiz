@@ -23,7 +23,7 @@ If choosing to view a score board, the scores for the choosen quiz is showed in 
 #### **Introduction**
 Contains the game logo and a small introduction, so that it is clear to the player what kind of game it is about to play. It also askes the player for a username. The username is mandatory as it is required to be able to save and sort the player score in a score board. Being able to save the score is useful to the player as the player won´t have to keep track of the score itself. 
 
-![A image of the game logo and a small introduction](biiiiiiiiiiiiiild)
+![A image of the game logo and a small introduction](documentation/trivia-quiz-intro.png)
 
 If a username isn´t entered, the player will be alerted by a message informing the player of what went wrong. This kind of message will also be alerted in all below cases: 
 - if a whitespace is entered in the username
@@ -31,18 +31,18 @@ If a username isn´t entered, the player will be alerted by a message informing 
 - if the username is more than 10 characters long
 - if the username is already taken by another user
 
-![A image of an alert message to the player when entering a invalid username](biiiiiiiiiiiiiiil)
+![A image of an alert message to the player when entering a invalid username](documentation/trivia-quiz-invalid-username.png)
 
 These limitations and messages are useful to the player as it ensures that their score is clearly visible in the score table and is not overwritten by another user's score. The messages are printed in red, to make them stand out and be eye-catching to the player.  
 
 #### **Quiz menu**
 After entering a valid username, the player is taken to the main quiz menu. This menu is very userful to the player as it allows the player to initiate a quiz but also quit the game (option "q") so that the player can end the game whenever it wants. A quiz is chosen by entering any of the valid choices "s" for science, "m" for movies or "g" for geography. The player is also informed of how its score is saved in the score board, which of course is important for the player to know about before playing. In the quiz menu the player can also choose to view the score board menu (option "v"). 
 
-![A image of the main quiz menu with options](biiiiiiiiiiiiiiil)
+![A image of the main quiz menu with options](documentation/trivia-quiz-quiz-menu.png)
 
 If the player enters a invalid choice the player will be alerted by a message informing the player of what went wrong. The message will be displayed each time the player enteres a invalid choice. This limitation and message is useful to the player as it ensures that they will end up where they want to end up when choosing a option in the menu. The messages are printed in red, to make them stand out and be eye-catching to the player. 
 
-![A image of an alert message to the player when entering a invalid choice](biiiiiiiiiiiiiiil)
+![A image of an alert message to the player when entering a invalid choice](documentation/trivia-quiz-invalid-quiz-choice.png)
 
 #### **The quizes - displaying questions**
 
@@ -60,7 +60,7 @@ You will need to explain what value each of the features provides for the user, 
 #### **Quit the game**
 When the player has chosen to quit the game in the main quiz menu, the below information is shown in the terminal. This part of the game is only shown in a couple of seconds which is useful to the player as it allows it to be informed that the game is shutting down but at the same time dosen´t force the player to stay in the game longer than necessary.
 
-![A image of a shutting down-message to the player when quitting the game](biiiiiiiiiiiiiiil)
+![A image of a shutting down-message to the player when quitting the game](documentation/trivia-quiz-quit.png)
 
 ### **Future features**
 Expansion of the game:
