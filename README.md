@@ -25,7 +25,7 @@ Contains the game logo and a small introduction, so that it is clear to the play
 
 ![A image of the game logo and a small introduction](documentation/trivia-quiz-intro.png)
 
-If a username isn´t entered, the player will be alerted by a message informing the player of what went wrong. This kind of message will also be alerted in all below cases: 
+The username is validated. If a username isn´t entered, the player will be alerted by a message informing the player of what went wrong. This kind of message will also be alerted in all below cases: 
 - if a whitespace is entered in the username
 - if the username is less than 2 characters long
 - if the username is more than 10 characters long
@@ -40,11 +40,17 @@ After entering a valid username, the player is taken to the main quiz menu. This
 
 ![A image of the main quiz menu with options](documentation/trivia-quiz-quiz-menu.png)
 
-If the player enters a invalid choice the player will be alerted by a message informing the player of what went wrong. The message will be displayed each time the player enteres a invalid choice. This limitation and message is useful to the player as it ensures that they will end up where they want to end up when choosing a option in the menu. The messages are printed in red, to make them stand out and be eye-catching to the player. 
+The player choice is validated. If the player enters a invalid choice the player will be alerted by a message informing the player of what went wrong. The message will be displayed each time the player enteres a invalid choice. This limitation and message is useful to the player as it ensures that they will end up where they want to end up when choosing a option in the menu. The messages are printed in red, to make them stand out and be eye-catching to the player. 
 
 ![A image of an alert message to the player when entering a invalid choice](documentation/trivia-quiz-invalid-quiz-choice.png)
 
 #### **The quizes - displaying questions**
+
+![A image of a quiz game when the first question is displayed](documentation/trivia-quiz-quiz-questions.png)
+
+![A image of one correctly answered and one incorrectly answered question](documentation/trivia-quiz-correct-incorrect.png)
+
+![A image of an alert message to the player when entering a invalid answer](documentation/trivia-quiz-invalid-answer.png)
 
 
 VIlket värde har denna feature för användaren. Fokus på vad användaren vill åstadkomma, och varför mitt projekt är bästa projektet att åstadkomma detta.
@@ -54,8 +60,11 @@ You will need to explain what value each of the features provides for the user, 
 #### **Score menu**
 
 
+![A image of the score menu with options](documentation/trivia-quiz-score-menu.png)
+
 #### **Score table**
 
+![A image of a score table displaying player scores](documentation/trivia-quiz-score-table.png)
 
 #### **Quit the game**
 When the player has chosen to quit the game in the main quiz menu, the below information is shown in the terminal. This part of the game is only shown in a couple of seconds which is useful to the player as it allows it to be informed that the game is shutting down but at the same time dosen´t force the player to stay in the game longer than necessary.
