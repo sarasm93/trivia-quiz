@@ -8,13 +8,21 @@ The TRIVIA QUIZ is for everyone who´d like to increase their general knowledge 
 You can find the site [here](LÄÄÄÄÄÄÄÄÄÄÄÄNK).
 
 ## **How to play**
+First the player has to enter a valid username. Then the main quiz menu is displayed. Here the player can choose a category of quiz questions (science, movies or geography), to view the score board menu or to quit the game.
+
+When the player chooses a quiz, the screen is cleared and the first question of that quiz is displayed. After entering a valid answer (1, 2 or 3) the user gets a message if the answer was correct or incorrect before the next question is displayed. When all questions in that quiz is answered the player is alerted and the reached score is saved. The player needs to press enter to get back to the quiz menu.
+
+If the player chooses to view the score board menu it is taken to a new menu with options to view a score board (one for each quiz catagory) or to get back to the main quiz menu. 
+
+If choosing to view a score board, the scores for the choosen quiz is showed in a table. The player can get back to the score board menu by pressing enter.
 
 ## **Features**
 
 ### **Existing features**
 
-### **Future features**
 
+
+### **Future features**
 Expansion of the game:
 - Add levels to each quiz - easy, medium, hard
 
@@ -34,8 +42,8 @@ The project has been tested so that it works and looks good in the Code Institut
 
 ### **Validator testing**
 I have validated my code with the [CI Python Linter](https://pep8ci.herokuapp.com/). I validated the code during the building process of the project. The test returned some errors:
-- trailing whitespaces, for example line 12 and 32. Solved by removing the whitespaces.
-- blank lines containing whitespaces. Solved by removing the whitespaces.
+- trailing whitespaces on several rows, which were solved simply by removing the whitespaces.
+- blank lines containing whitespaces, also solved simply by removing the whitespaces.
 - lines with more than 80 characters. To solve this I made sure all lines where less than 80 characters. For example, lines in the `validate_choice`-function was to long. In that function the names of the arguments were a bit long. Changing to shorter names solved this error. In the `run_option`-function, the the questions and the print messages to the user were to long. This was solved by placing them on two lines instead of one.
 
 I had the above errors in mind when continuing building the project, to not cause them again. When the code was finished I tested it with CI Python Linter again. The deployed code returns no errors when validated.
@@ -61,15 +69,15 @@ Hade STOR problem med hur man ska sortera score board. Försökte med en lista f
 
 
 ### **Bugs**
-When validating the username, at first I forgot to handle blank spaces (which are not allowed in the username) in the 'validate_username'-function. To check for this I began by trying to add another if-statment checking if 'data == " "' but later found the 'isspace()'-method. I sed this [geeksforgeeks page](https://www.geeksforgeeks.org/python-string-isspace-method/) to help me figure out that the username could be itered through to find spaces.
+When validating the username, at first I forgot to handle blank spaces (which I didn´t want to be allowed in the username) in the 'validate_username'-function. To check for this I began by trying to add another if-statment checking if 'data == " "' but later found the 'isspace()'-method. I used this [geeksforgeeks page](https://www.geeksforgeeks.org/python-string-isspace-method/) to help me figure out that the username could be itered through to find spaces.
 
 To display the questions in a quiz the `run_option`-function in the `choose_option`-function has to be called. When manually testing the program when building it, the questions in a quiz would not stop displaying after all six of them had been answered. The program was put through Python Tutor which showed that after the last question was answered the program went to the `validate_choice`-function and ran the if-statment in it. Then I noticed that the `run_option`-function was called from this function as well, causing the questions to display over and over. To solve this I just removed the `run_option`-function in the `validate_choice`-function. 
 
 BIIIIIIIIIIILDD  SOM DU TOG PÅ KODEN. 
 
-When creating the quiz, at first I stored the username in a global variable. But this gave a warning in the Gitpod workspace which reminded me of that using global variables isn´t best practise. To solve this I created a class called 'Player' and put the username variable inside it. 
+When creating the quiz, at first I stored the username in a global variable. But this gave a warning in the Gitpod workspace which reminded me of that using global variables might not be best practise. To solve this I created a class called 'Player' and put the username variable inside it. 
 
-No other bugs have been idenitified in the deployed version.
+No bugs have been idenitified in the deployed version.
 
 ## **Deployment**
 You can find the link to the live site [here](LÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄNK).
