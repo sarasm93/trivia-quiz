@@ -65,8 +65,10 @@ def validate_username(input_name):
             raise ValueError(
                 " It cannot be longer than 10 characters")
     except ValueError as e:
+        print(Fore.RED)
         print(f"\n     Invalid username: {e}.")
         print("                        Please try again.\n")
+        print(Style.RESET_ALL)
         valid = False
 
     if valid:
