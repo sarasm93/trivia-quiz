@@ -100,8 +100,8 @@ The code on line 36 to clear the screen/user window is taken from [this Stackove
 The readme-file for the Code Institute scope project [showed here](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+PE_PAGPPF+2021_Q2/courseware/b3378fc1159e43e3b70916fdefdfae51/605f34e006594dc4ae19f5e60ec75e2e/) was used as inspiration for the content of the readme.md file. 
 
 The following external python libraries were used in this project:
-- [tabulate](https://pypi.org/project/tabulate/)
-- [colorama](https://pypi.org/project/colorama/)
+- [tabulate](https://pypi.org/project/tabulate/) - to display each score board in a simple table.
+- [colorama](https://pypi.org/project/colorama/) - to add some color to the project.
 
 [This Askpython.com page](https://www.askpython.com/python/examples/print-colored-text-to-the-terminal-in-python) helped me understand how to use colorama.
 

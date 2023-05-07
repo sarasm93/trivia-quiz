@@ -36,14 +36,6 @@ def clear_screen():
     os.system("clear")
 
 
-def get_username():
-    """
-    Ask the player for a username.
-    """
-    Player.name = input("Please enter a username: \n")
-    validate_username(Player.name)
-
-
 def validate_username(input_name):
     """
     Validate username by checking that a username is entered, no blank
@@ -86,6 +78,14 @@ def validate_username(input_name):
         get_username()
 
 
+def get_username():
+    """
+    Ask the player for a username.
+    """
+    Player.name = input("Please enter a username: \n")
+    validate_username(Player.name)
+
+
 def display_quiz_options():
     """
     Display quiz menu with options to choose a game, display
@@ -106,19 +106,6 @@ def display_quiz_options():
     for option in options_list:
         print(option)
     choose_option()
-
-
-def choose_option():
-    """
-    Asking player to choose an option from the quiz menu.
-    """
-    print(Style.RESET_ALL)
-    player_choice = input("Enter your choice: \n")
-    if validate_choice(player_choice, ["s", "m", "g", "v", "q"]) is True:
-        clear_screen()
-        run_option(player_choice)
-    else:
-        choose_option()
 
 
 def validate_choice(input_choice, options):
@@ -151,6 +138,19 @@ def validate_choice(input_choice, options):
         print(f"Invalid choice. Enter {new_options} to make a choice.")
         print(Style.RESET_ALL)
         return False
+
+
+def choose_option():
+    """
+    Asking player to choose an option from the quiz menu.
+    """
+    print(Style.RESET_ALL)
+    player_choice = input("Enter your choice: \n")
+    if validate_choice(player_choice, ["s", "m", "g", "v", "q"]) is True:
+        clear_screen()
+        run_option(player_choice)
+    else:
+        choose_option()
 
 
 def sort_score_board(input_board, list_index):
@@ -195,17 +195,18 @@ def display_score_menu():
     choose_score_board()
 
 
-def choose_score_board():
+def print_score_board(input_board, title):
     """
-    Asking player to choose an option from the score board menu.
+    When player chooses option "v" in options menu, this function is run to
+    show the score board for each quiz in a table.
     """
-    print(Style.RESET_ALL)
-    player_choice = input("Enter your choice: \n")
-    if validate_choice(player_choice, ["s", "m", "g", "b"]) is True:
-        clear_screen()
-        run_score_board(player_choice)
-    else:
-        choose_score_board()
+    headers = [f"{title}", "\n\nPlayer    ", "\n\nScore"]
+    scores_as_list = [headers]
+    for key in input_board.keys():
+        player_data = ["", key, input_board[key]]
+        scores_as_list.append(player_data)
+    table = tb(scores_as_list, headers="firstrow")
+    print(f"{table}\n\n")
 
 
 def run_score_board(input_choice):
@@ -239,18 +240,53 @@ def run_score_board(input_choice):
         display_quiz_options()
 
 
-def print_score_board(input_board, title):
+def choose_score_board():
     """
-    When player chooses option "v" in options menu, this function is run to
-    show the score board for each quiz in a table.
+    Asking player to choose an option from the score board menu.
     """
-    headers = [f"{title}", "\n\nPlayer    ", "\n\nScore"]
-    scores_as_list = [headers]
-    for key in input_board.keys():
-        player_data = ["", key, input_board[key]]
-        scores_as_list.append(player_data)
-    table = tb(scores_as_list, headers="firstrow")
-    print(f"{table}\n\n")
+    print(Style.RESET_ALL)
+    player_choice = input("Enter your choice: \n")
+    if validate_choice(player_choice, ["s", "m", "g", "b"]) is True:
+        clear_screen()
+        run_score_board(player_choice)
+    else:
+        choose_score_board()
+
+
+def run_quiz(questions):
+    """
+    When called this function prints questions in chosen quiz (first popping of
+    the correct answer (index 4 in question list).
+    """
+    score = 0
+    for question in questions:
+        correct_answer = question.pop()
+        print(f"Score: {score}\n")
+        for item in question:
+            print(item)
+        option_valid = False
+        while option_valid is False:
+            player_answer = input("Enter your answer: \n")
+            option_valid = validate_choice(player_answer, ["1", "2", "3"])
+        if correct_answer == player_answer:
+            print(Fore.GREEN + "CORRECT! Well done!\n\n")
+            print(Style.RESET_ALL)
+            score += 1
+        else:
+            print(Fore.RED + "INCORRECT.\n\n")
+            print(Style.RESET_ALL)
+    return score
+
+
+def run_quit_game():
+    """
+    Shuts down game when player chooses quit option "q" in options menu.
+    """
+    print(Fore.GREEN + "\n\nHope you had fun! :)\n\n")
+    print(Style.RESET_ALL)
+    print("Shutting down quiz...\n")
+    delay(3)
+    clear_screen()
 
 
 def run_option(input_choice):
@@ -368,42 +404,6 @@ def run_option(input_choice):
     if input_choice == "q":
         clear_screen()
         run_quit_game()
-
-
-def run_quiz(questions):
-    """
-    When called this function prints questions in chosen quiz (first popping of
-    the correct answer (index 4 in question list).
-    """
-    score = 0
-    for question in questions:
-        correct_answer = question.pop()
-        print(f"Score: {score}\n")
-        for item in question:
-            print(item)
-        option_valid = False
-        while option_valid is False:
-            player_answer = input("Enter your answer: \n")
-            option_valid = validate_choice(player_answer, ["1", "2", "3"])
-        if correct_answer == player_answer:
-            print(Fore.GREEN + "CORRECT! Well done!\n\n")
-            print(Style.RESET_ALL)
-            score += 1
-        else:
-            print(Fore.RED + "INCORRECT.\n\n")
-            print(Style.RESET_ALL)
-    return score
-
-
-def run_quit_game():
-    """
-    Shuts down game when player chooses quit option "q" in options menu.
-    """
-    print(Fore.GREEN + "\n\nHope you had fun! :)\n\n")
-    print(Style.RESET_ALL)
-    print("Shutting down quiz...\n")
-    delay(3)
-    clear_screen()
 
 
 def main():
