@@ -5,7 +5,7 @@ The TRIVIA QUIZ is for everyone who´d like to test their trivia knowledge and i
 
 ![A image of the deployed game in the Code Institute Heroku terminal](documentation/trivia-quiz-start.png)
 
-You can find the site [here](LÄÄÄÄÄÄÄÄÄÄÄÄNK).
+You can find the site [here](https://trivia-quiz.herokuapp.com/).
 
 ## **How to play**
 First the player has to enter a valid username. Then the main quiz menu is displayed. Here the player can choose a category of quiz questions (science, movies or geography), to view the score board menu or to quit the game.
