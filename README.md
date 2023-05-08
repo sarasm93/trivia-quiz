@@ -165,7 +165,7 @@ The code on line 36 to clear the screen/user window is taken from [this Stackove
 
 [This](https://sports-hangman.herokuapp.com/) peer portfolio project inspired me to have different catagories of questions (i.e. different games).
 
-The readme.md-files for the Code Institute scope project [showed here](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+PE_PAGPPF+2021_Q2/courseware/b3378fc1159e43e3b70916fdefdfae51/605f34e006594dc4ae19f5e60ec75e2e/) and the [Love Running website](https://github.com/Code-Institute-Solutions/readme-template) was used as inspiration for the content of the readme.md file for this project. 
+The readme.md-files for the Code Institute scope project [showed here](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+PE_PAGPPF+2021_Q2/courseware/b3378fc1159e43e3b70916fdefdfae51/605f34e006594dc4ae19f5e60ec75e2e/), the [Love Running website](https://github.com/Code-Institute-Solutions/readme-template) and my [Studio dancers site](https://sarasm93.github.io/studio-dancers/) was used as inspiration for the content of the readme.md file for this project. 
 
 The following external python libraries were used in this project:
 - [tabulate](https://pypi.org/project/tabulate/) - to display each score board in a simple table.
