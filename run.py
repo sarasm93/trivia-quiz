@@ -163,7 +163,7 @@ def sort_score_board(input_board, list_index):
     """
     # Code on line 169-174 is taken from the below page to loop through
     # a dictionary of scores. The code has been adjusted to fit to this
-    # program by changing variable names and by adding "reverse=True)"
+    # program by changing variable names and by adding "reverse=True.
     # https://stackabuse.com/how-to-sort-dictionary-by-value-in-python/
     dictionary = input_board[list_index]
     sorted_board = {}
@@ -202,6 +202,7 @@ def print_score_board(input_board, title):
     When player chooses option "v" in options menu, this function is run to
     show the score board for each quiz in a table.
     """
+    # The table is created at line 211 using the tabulate package.
     headers = [f"{title}", "\n\nPlayer    ", "\n\nScore"]
     scores_as_list = [headers]
     for key in input_board.keys():
