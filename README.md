@@ -36,7 +36,9 @@ The username is validated. If a username isn´t entered, the player will be aler
 These limitations and messages are useful to the player as it ensures that their score is clearly visible in the score table and is not overwritten by another user's score. The messages are printed in red, to make them stand out and be eye-catching to the player.  
 
 #### **Quiz menu**
-After entering a valid username, the player is taken to the main quiz menu. This menu is very userful to the player as it allows the player to initiate a quiz but also quit the game (option "q") so that the player can end the game whenever it wants. A quiz is chosen by entering any of the valid choices "s" for science, "m" for movies or "g" for geography. The player is also informed of how its score is saved in the score board, which of course is important for the player to know about before playing. In the quiz menu the player can also choose to view the score board menu (option "v"). 
+After entering a valid username, the player is taken to the main quiz menu. This menu is very useful to the player as it allows the player to initiate a quiz but also quit the game (option "q") so that the player can end the game whenever it wants. A quiz is chosen by entering any of the valid choices "s" for science, "m" for movies or "g" for geography. The player is also informed of how its score is saved in the score board, which of course is important for the player to know about before playing. In the quiz menu the player can also choose to view the score board menu (option "v"). 
+
+Each quiz has its own color which is used throughout the whole game to make it even easier for the player to quickly realize and keep track of where it is.
 
 ![A image of the main quiz menu with options](documentation/trivia-quiz-quiz-menu.png)
 
@@ -54,17 +56,22 @@ If a question is answered correctly, the player is informed by a message saying 
 
 ![A image of one correctly answered and one incorrectly answered question](documentation/trivia-quiz-correct-incorrect.png)
 
-The player answer is validated. If the player enters a invalid answer the player will be alerted by a message informing the player of what went wrong. This limitation and message is useful to the player as it makes it impossible to enter a wrong answer by accidentally entering a answer that isn´t even one of the alternatives. The messages are printed in red, to make them stand out and be eye-catching to the player. 
+The player answer is validated. If the player enters a invalid answer (valid options "1", "2" or "3") the player will be alerted by a message informing the player of what went wrong. This limitation and message is useful to the player as it makes it impossible to enter a wrong answer by accidentally entering a answer that isn´t even one of the alternatives. The messages are printed in red, to make them stand out and be eye-catching to the player. 
 
 ![A image of an alert message to the player when entering a invalid answer](documentation/trivia-quiz-invalid-answer.png)
 
 #### **Score menu**
-
+When the player has chosen to view the score menu in the quiz menu (option "v"), the player is taken to the score menu. This menu is useful to the player as it allows the player to choose which score board it wants to see (option "s", "m" or "g"). From here the player can also go back to the main quiz menu by entering "b" (for "back").
 
 ![A image of the score menu with options](documentation/trivia-quiz-score-menu.png)
 
+The player choice is validated. If the player enters a invalid choice the player will be alerted by a message informing the player of what went wrong. This message is exactly the same as the one displayed when a invalid choice is made in the quiz menu, except the information about what options are valid. The message will be displayed each time the player enteres a invalid choice. This limitation and message is useful to the player as it ensures that they will end up where they want to end up when choosing a option in the menu. The messages are printed in red, to make them stand out and be eye-catching to the player. 
+
 #### **Score table**
 Each score table (options "s", "m" and "g" in the score menu) is structured in the same way. 
+When the player has chosen to show a score table in the score menu, it is taken to the table containing all the usernames and the scores for the players that have played that quiz. The quiz name is also displayed in the header of the table, so that the player is ensured that it has been taken to the table it chose. 
+
+The table is sorted by the score in descending order, so that the player can see how well it finished the quiz compared to other players, which makes the game more fun to play!
 
 ![A image of a score table displaying player scores](documentation/trivia-quiz-score-table.png)
 

@@ -186,7 +186,7 @@ def display_score_menu():
     clear_screen()
     print("\n\n              Score menu             ")
     print("-------------------------------------\n")
-    print("which score board do you want to see?\n")
+    print("Which score board do you want to see?\n")
     options_list = [Fore.YELLOW + "[s] Science score board",
                     Fore.MAGENTA + "[m] Movies score board",
                     Fore.CYAN + "[g] Geography score board",
