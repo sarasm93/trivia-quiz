@@ -131,7 +131,7 @@ When creating the quiz, at first I stored the username in a global variable. But
 No bugs have been idenitified in the deployed version.
 
 ## **Deployment**
-You can find the link to the live site [here](LÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄNK).
+You can find the link to the live site [here](https://trivia-quiz.herokuapp.com/).
 
 The site was deployed to Heroku with the following steps:
 
